@@ -83,6 +83,8 @@ void ObjectManager::Start()
 	pGround[12]->SetPosition(110, 25);
 	pGround[13]->SetPosition(120, 25);
 	pGround[14]->SetPosition(130, 25);
+	pGround[15]->SetPosition(100, 13);
+	pGround[16]->SetPosition(90, 13);
 }
 
 void ObjectManager::Update()
@@ -97,10 +99,10 @@ void ObjectManager::Update()
 			if (CollisionManager::RectCollision( pGround[i]->GetTransform(), pPlayer->GetTransform()))
 			{
 				dynamic_cast<Player*>(pPlayer)->isGround = true;
+				dynamic_cast<Player*>(pPlayer)->setStepGround(pGround[i]);
 				pPlayer->SetPosition(Vector3(pPlayer->GetPosition().x, pGround[i]->GetPosition().y - pPlayer->GetTransform().Scale.y+1));
 				CursorManager::GetInstance()->WriteBuffer(130, 2, (char*)"dafsfssdfsa");
 			}
-				
 		}
 	}
 

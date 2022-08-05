@@ -3,6 +3,7 @@
 #include "InputManager.h"
 #include "CursorManager.h"
 #include "OutputManager.h"
+#include "CollisionManager.h"
 
 
 Player::Player()
@@ -11,10 +12,11 @@ Player::Player()
 	EnimTime = GetTickCount64();
 	PlayerState = ObjState::IDLE;
 	currEnim = 0;
-	gravityAccel = -0.3;
+	gravityAccel = 0.3;
 	speed = { 0,0 };
 	isJump = false;
 	isGround = false;
+	stepGround = nullptr;
 }
 
 Player::~Player()
@@ -25,7 +27,7 @@ void Player::move()
 {
 	speed.y += gravityAccel;
 
-	Info.Position += Vector3(speed.x * Info.Direction.x, speed.y * Info.Direction.y);
+	Info.Position += Vector3(speed.x , speed.y );
 }
 
 void Player::Start()
@@ -105,7 +107,7 @@ int Player::Update()
 	{
 		PlayerState = ObjState::MOVE;
 		Info.Direction.x = -1;
-		speed.x = 2;
+		speed.x = -2;
 	}
 		
 	if (dwKey & KEY_RIGHT)
@@ -123,20 +125,27 @@ int Player::Update()
 			isJump = true;
 			isGround = false;
 			Info.Direction.y = -1;
-			speed.y = 2.0;
+			speed.y = -2.0;
 		}
 	}
 
+	if (isJump && isGround)
+		isJump = false;
+
+	if (stepGround!=nullptr && !CollisionManager::RectCollision(Info, stepGround->GetTransform()))
+		isGround = false;
+	
+	if (isGround)
+	{
+		speed.y = 0;
+		CursorManager::GetInstance()->WriteBuffer(142, 3, (char*)"is ground");
+	}
+		
+	
+
 	move();
 
-	if (isJump && isGround)
-	{
-		isJump = false;
-		Info.Direction.y = 0;
-	}
 	
-	
-		
 
 	//if (dwKey & KEY_ESCAPE)
 		//Info.Position = Vector3(0.0f, 0.0f);

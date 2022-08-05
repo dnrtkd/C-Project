@@ -12,7 +12,7 @@ public:
 		if (_Current.Position.x < TargetEndPoint.x &&
 			_Target.Position.x < CurrentEndPoint.x &&
 			_Current.Position.y < TargetEndPoint.y &&
-			_Current.Position.y < CurrentEndPoint.y)
+			_Target.Position.y < CurrentEndPoint.y)
 			return true;
 
 		return false;
