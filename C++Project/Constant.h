@@ -1,5 +1,7 @@
 #pragma once
 
+#define SCREEN_SIZE_X 150
+#define SCREEN_SIZE_Y 40
 
 const DWORD KEY_UP = 0x00000001;
 const DWORD KEY_DOWN = 0x00000002;

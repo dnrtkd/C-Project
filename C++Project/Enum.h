@@ -8,3 +8,20 @@ enum class SCENEID
 	STAGE,
 	EXIT,
 };
+
+enum class ObjState
+{
+	IDLE,
+	MOVE,
+	DASH,
+	ATTACK,
+	JUMP,
+	DEAD
+};
+
+enum class ObjTag
+{
+	Ground,
+	Enemy,
+	Player
+};

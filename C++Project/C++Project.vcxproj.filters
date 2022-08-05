@@ -61,6 +61,12 @@
     <Filter Include="헤더 파일\Include">
       <UniqueIdentifier>{1b134bfb-94db-43d8-a815-a50a48d3a682}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Manager\OutputManager">
+      <UniqueIdentifier>{1c1b3bf7-c650-4b47-b436-f45e748470ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\Ground">
+      <UniqueIdentifier>{4a94f406-b39c-4462-8285-8be2e96fa077}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -104,6 +110,9 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>소스 파일\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>소스 파일\Object\Ground</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +169,12 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>소스 파일\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputManager.h">
+      <Filter>소스 파일\Manager\OutputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>소스 파일\Object\Ground</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

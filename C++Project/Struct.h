@@ -49,5 +49,16 @@ struct Transform
 	Vector3 Direction;
 };
 
+struct Texture
+{
+	const char* texture[5];
+};
+
+
+
+
+
+
+
 
 
