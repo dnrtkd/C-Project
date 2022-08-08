@@ -34,7 +34,7 @@ void Player::Start()
 {
 	Info.Position = Vector3(74.0f, 35.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
-	Info.Scale = Vector3(strlen(" 0 "), 5.0f);
+	Info.Scale = Vector3(strlen(" 0  "), 5.0f);
 	Info.Direction = Vector3(0.0f, 0.0f);
 	Target = nullptr;
 
@@ -195,8 +195,9 @@ int Player::Update()
 
 void Player::Render()
 {
-	
-	OutputManager::OnDrawText(Enim[currEnim], Info.Scale.y, Info.Position.x, Info.Position.y);
+	CursorManager::GetInstance()->RenderObj(Enim[currEnim], Info.Scale.y, (int)Info.Scale.x, (int)Info.Position.x, Info.Position.y);
+	CursorManager::GetInstance()->WriteBuffer( Vector3(130,3), Info.Position.x);
+	//OutputManager::OnDrawText(Enim[currEnim], Info.Scale.y, Info.Position.x, Info.Position.y);
 }
 
 void Player::Release()

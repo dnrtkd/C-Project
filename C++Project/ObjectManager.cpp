@@ -85,6 +85,8 @@ void ObjectManager::Start()
 	pGround[14]->SetPosition(130, 25);
 	pGround[15]->SetPosition(100, 13);
 	pGround[16]->SetPosition(90, 13);
+	pGround[17]->SetPosition(140, 25);
+	pGround[18]->SetPosition(-2, 25);
 }
 
 void ObjectManager::Update()

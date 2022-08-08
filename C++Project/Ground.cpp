@@ -13,7 +13,8 @@ int Ground::Update()
 
 void Ground::Render()
 {
-	OutputManager::OnDrawText(Sprite, 5, Info.Position.x, Info.Position.y);
+	CursorManager::GetInstance()->RenderObj(Sprite, Info.Scale.y, Info.Scale.x, Info.Position.x, Info.Position.y);
+	//OutputManager::OnDrawText(Sprite, 5, Info.Position.x, Info.Position.y);
 }
 
 void Ground::Release()
