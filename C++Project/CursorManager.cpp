@@ -3,6 +3,7 @@
 CursorManager* CursorManager::Instance = nullptr;
 
 CursorManager::CursorManager() : BufferIndex(0),maxWidth(150),maxHeight(40)
+,screenPosiX(0),screenPosiY(0)
 {
 
 }
@@ -84,6 +85,11 @@ void CursorManager::WriteBuffer(Vector3 _Position, int val, int _Color)
 
 void CursorManager::RenderObj(const Texture& texture, int sizeY,int sizeX ,float _x, float _y)
 {
+	// 출력하고자 하는 오브젝트의 좌표값- 스크린 좌표값을 해줌으로서
+	//스크린 좌표 이동을 구현할 수 있다.
+	_x = _x - screenPosiX;
+	_y = _y - screenPosiY;
+
 	//출력하고자 하는 좌표가  행 0~150  열 0~40 범위 밖인 경우 출력 X
 	if (_x >=  maxWidth ||
 		_x + sizeX  <0  ||

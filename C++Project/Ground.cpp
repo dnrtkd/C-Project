@@ -3,7 +3,7 @@
 
 void Ground::Start()
 {
-	Info.Scale = { (float)strlen("=========="),5 };
+	Info.Scale = { (float)strlen(Sprite.texture[0]),5 };
 }
 
 int Ground::Update()
@@ -24,11 +24,11 @@ void Ground::Release()
 Ground::Ground()
 {
 	tag = ObjTag::Ground;
-	Sprite.texture[0] = "==========";
-	Sprite.texture[1] = "==========";
-	Sprite.texture[2] = "==========";
-	Sprite.texture[3] = "==========";
-	Sprite.texture[4] = "==========";
+	Sprite.texture[0] = "==================================================";
+	Sprite.texture[1] = "==================================================";
+	Sprite.texture[2] = "==================================================";
+	Sprite.texture[3] = "==================================================";
+	Sprite.texture[4] = "==================================================";
 }
 
 Ground::~Ground()

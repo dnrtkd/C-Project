@@ -21,18 +21,23 @@ Player::Player()
 
 Player::~Player()
 {
+
 }
 
 void Player::move()
 {
+
 	speed.y += gravityAccel;
+
+	if (Info.Position.x - CursorManager::GetInstance()->getScrPosiX() > 90)
+		CursorManager::GetInstance()->addScreenPosiX(speed.x);
 
 	Info.Position += Vector3(speed.x , speed.y );
 }
 
 void Player::Start()
 {
-	Info.Position = Vector3(74.0f, 35.0f);
+	Info.Position = Vector3(50.0f, 35.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(strlen(" 0  "), 5.0f);
 	Info.Direction = Vector3(0.0f, 0.0f);
@@ -142,7 +147,7 @@ int Player::Update()
 	}
 		
 	
-
+	
 	move();
 
 	
