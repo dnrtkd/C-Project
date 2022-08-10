@@ -4,7 +4,11 @@
 #include "CursorManager.h"
 #include "OutputManager.h"
 #include "CollisionManager.h"
+#include "ObjectManager.h"
 
+void Player::basicAttack()
+{
+}
 
 Player::Player()
 {
@@ -99,7 +103,15 @@ int Player::Update()
 	speed.x = 0;
 	
 	if (dwKey & KEY_UP)
-		Info.Position.y--;
+	{
+		if (!isJump && isGround)
+		{
+			isJump = true;
+			isGround = false;
+			Info.Direction.y = -1;
+			speed.y = -2.0;
+		}
+	}
 
 	if (dwKey & KEY_DOWN)
 	{
@@ -125,13 +137,7 @@ int Player::Update()
 
 	if (dwKey & KEY_SPACE )
 	{
-		if (!isJump && isGround)
-		{
-			isJump = true;
-			isGround = false;
-			Info.Direction.y = -1;
-			speed.y = -2.0;
-		}
+		ObjectManager::GetInstance()->CreateObject();
 	}
 
 	if (isJump && isGround)

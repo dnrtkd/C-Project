@@ -29,10 +29,10 @@ int Enemy::Update()
 		if (Count >= 10)
 		{
 			Count = 0;
-			ObjectManager::GetInstance()->CreateObject(1);
+			ObjectManager::GetInstance()->CreateObject();
 		}
 		else
-			ObjectManager::GetInstance()->CreateObject(0);
+			ObjectManager::GetInstance()->CreateObject();
 
 		Time = GetTickCount64();
 	}

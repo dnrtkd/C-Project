@@ -25,7 +25,7 @@ ObjectManager::~ObjectManager()
 }
 
 
-void ObjectManager::CreateObject(int _StateIndex)
+void ObjectManager::CreateObject()
 {
 	for (int i = 0; i < 128; ++i)
 	{
@@ -33,22 +33,14 @@ void ObjectManager::CreateObject(int _StateIndex)
 		{
 			pBullet[i] = new Bullet;
 			pBullet[i]->Start();
-			pBullet[i]->SetPosition(74.0f, 1.0f);
+			Vector3 vec = pPlayer->GetPosition();
 
-			switch (_StateIndex)
-			{
-			case 0:
-			{
-				Vector3 Direction = pPlayer->GetPosition() - pBullet[i]->GetPosition();
-				pBullet[i]->SetDirection(Direction);
-				((Bullet*)pBullet[i])->SetIndex(_StateIndex);
-			}
-			break;
-			case 1:
-				pBullet[i]->SetTarget(pPlayer);
-				((Bullet*)pBullet[i])->SetIndex(_StateIndex);
-				break;
-			}
+			pBullet[i]->SetDirection(pPlayer->GetTransform().Direction.x,0);
+
+			if(pPlayer->GetTransform().Direction.x==1)
+				pBullet[i]->SetPosition(vec.x+6,vec.y+2);
+			else
+				pBullet[i]->SetPosition(vec.x -1, vec.y + 2);
 			break;
 		}
 	}
@@ -59,8 +51,6 @@ void ObjectManager::Start()
 	pPlayer = new Player;
 	pPlayer->Start();
 
-	pEnemy = new Enemy;
-	pEnemy->Start();
 
 	for (size_t i = 0; i < 32; i++)
 	{
@@ -80,7 +70,6 @@ void ObjectManager::Start()
 void ObjectManager::Update()
 {
 	pPlayer->Update();
-	pEnemy->Update();
 
 	for (size_t i = 0; i < 32; i++)
 	{
@@ -103,6 +92,12 @@ void ObjectManager::Update()
 		{
 			result = pBullet[i]->Update();
 
+			float scrX = CursorManager::GetInstance()->getScrPosiX();
+			if (pBullet[i]->GetPosition().x - scrX < 0 && pBullet[i]->GetPosition().x - scrX>150)
+			{
+				delete pBullet[i];
+				pBullet[i] = nullptr;
+			}
 			if (CollisionManager::RectCollision(
 				pPlayer->GetTransform(),
 				pBullet[i]->GetTransform()))
@@ -124,7 +119,6 @@ void ObjectManager::Update()
 void ObjectManager::Render()
 {
 	pPlayer->Render();
-	pEnemy->Render();
 
 	for (int i = 0; i < 128; ++i)
 	{
@@ -143,8 +137,6 @@ void ObjectManager::Release()
 	delete pPlayer;
 	pPlayer = nullptr;
 
-	delete pEnemy;
-	pEnemy = nullptr;
 
 	for (int i = 0; i < 128; ++i)
 	{

@@ -16,6 +16,8 @@ class Player : public Object
     Object* stepGround;
 
 	bool isJump;
+	
+	float damage;
 public:
 	bool isGround;
 public:
@@ -24,11 +26,12 @@ public:
 	virtual void Render()override;
 	virtual void Release()override;
 	void move();
-
+	//objectManager에서 내가 밟고 있는 땅의 포인터를 가져옴
 	void setStepGround( Object* ground)
 	{
 		stepGround = ground;
 	}
+	void basicAttack();
 public:
 	Player();
 	virtual ~Player();

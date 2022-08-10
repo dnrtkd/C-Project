@@ -19,7 +19,7 @@ private:
 	Object* pEnemy;
 	Object* pGround[32];
 public:
-	void CreateObject(int _StateIndex);
+	void CreateObject();
 	void Start();
 	void Update();
 	void Render();

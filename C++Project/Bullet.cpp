@@ -3,58 +3,39 @@
 
 Bullet::Bullet()
 {
-}
-
-Bullet::~Bullet()
-{
-}
-
-
-void Bullet::Start()
-{
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(1.0f, 1.0f);
 	Info.Direction = Vector3(0.0f, 0.0f);
 
 	Target = nullptr;
+
+	enim = new Texture[2];
+}
+
+Bullet::~Bullet()
+{
+
+}
+
+
+void Bullet::Start()
+{
+	enim[0].texture[0] = "*";
+
 }
 
 int  Bullet::Update()
 {
-	switch (Index)
-	{
-	case 0:
-		Info.Position += Info.Direction * 0.05f;
-		break;
-	case 1:
-	{
-		Info.Direction = Target->GetPosition() - Info.Position;
-		Info.Position += Info.Direction * 0.025f;
-	}
-	break;
-	}
-
-	if (Info.Position.x <= 0 || Info.Position.x >= 150 ||
-		Info.Position.y <= 0 || Info.Position.y >= 40)
-	{
-		return 1;
-	}
+	Info.Position.x += 4 * Info.Direction.x;
 
 	return 0;
 }
 
 void Bullet::Render()
 {
-	switch (Index)
-	{
-	case 0:
-		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*");
-		break;
-	case 1:
-		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*", 12);
-		break;
-	}
+	CursorManager::GetInstance()->RenderObj(enim[0], Info.Scale.y, Info.Scale.x, 
+		Info.Position.x, Info.Position.y);
 }
 
 void Bullet::Release()
