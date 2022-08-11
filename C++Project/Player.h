@@ -15,9 +15,11 @@ class Player : public Object
 
     Object* stepGround;
 
-	bool isJump;
+	bool isJump; //점프 했는지 체크
 	
-	float damage;
+	float damage; //데미지
+	float hp;
+	float delay; //공격 대기시간
 public:
 	bool isGround;
 public:

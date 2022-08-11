@@ -3,14 +3,15 @@
 
 class Enemy : public Object
 {
-private:
-	ULONGLONG Time;
-	int Count;
-public:
-	virtual void Start()override;
-	virtual int  Update()override;
-	virtual void Render()override;
-	virtual void Release()override;
+protected:
+	float hp;
+	float damage;
+	int gold;
+	int exp;
+
+	Texture* Enim; //텍스쳐 모음
+	ULONGLONG EnimTime;// 애니메이션 변수
+
 public:
 	Enemy();
 	virtual ~Enemy();

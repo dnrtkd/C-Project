@@ -67,6 +67,12 @@
     <Filter Include="소스 파일\Object\Ground">
       <UniqueIdentifier>{4a94f406-b39c-4462-8285-8be2e96fa077}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\UI">
+      <UniqueIdentifier>{2b4bd528-39e1-471a-923d-d3ad8ef00912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\Enemy\Worker">
+      <UniqueIdentifier>{895be5ad-26d2-4e8f-bdb4-324ee9377dfc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -113,6 +119,12 @@
     </ClCompile>
     <ClCompile Include="Ground.cpp">
       <Filter>소스 파일\Object\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>소스 파일\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Worker.cpp">
+      <Filter>소스 파일\Object\Enemy\Worker</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +187,12 @@
     </ClInclude>
     <ClInclude Include="Ground.h">
       <Filter>소스 파일\Object\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>소스 파일\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Worker.h">
+      <Filter>소스 파일\Object\Enemy\Worker</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

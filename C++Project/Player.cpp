@@ -21,6 +21,9 @@ Player::Player()
 	isJump = false;
 	isGround = false;
 	stepGround = nullptr;
+	delay = 0.2f; //0.2ÃÊ
+	hp = 50.0f;
+	damage = 5.0f;
 }
 
 Player::~Player()
@@ -137,6 +140,7 @@ int Player::Update()
 
 	if (dwKey & KEY_SPACE )
 	{
+		
 		ObjectManager::GetInstance()->CreateObject();
 	}
 

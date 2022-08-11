@@ -93,10 +93,9 @@ void ObjectManager::Update()
 			result = pBullet[i]->Update();
 
 			float scrX = CursorManager::GetInstance()->getScrPosiX();
-			if (pBullet[i]->GetPosition().x - scrX < 0 && pBullet[i]->GetPosition().x - scrX>150)
+			if (pBullet[i]->GetPosition().x - scrX < 0 || pBullet[i]->GetPosition().x - scrX>150)
 			{
-				delete pBullet[i];
-				pBullet[i] = nullptr;
+				result = 1;
 			}
 			if (CollisionManager::RectCollision(
 				pPlayer->GetTransform(),
