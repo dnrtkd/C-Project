@@ -8,6 +8,11 @@
 
 void Player::basicAttack()
 {
+	if (fireTime + delay * 1000 < GetTickCount64())
+	{
+		fireTime = GetTickCount64();
+		ObjectManager::GetInstance()->CreateObject();
+	}
 }
 
 Player::Player()
@@ -24,6 +29,7 @@ Player::Player()
 	delay = 0.2f; //0.2ÃÊ
 	hp = 50.0f;
 	damage = 5.0f;
+	fireTime = GetTickCount64();
 }
 
 Player::~Player()
@@ -42,9 +48,14 @@ void Player::move()
 	Info.Position += Vector3(speed.x , speed.y );
 }
 
+void Player::skill_1()
+{
+	
+}
+
 void Player::Start()
 {
-	Info.Position = Vector3(50.0f, 35.0f);
+	Info.Position = Vector3(50.0f, 30.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(strlen(" 0  "), 5.0f);
 	Info.Direction = Vector3(0.0f, 0.0f);
@@ -140,8 +151,7 @@ int Player::Update()
 
 	if (dwKey & KEY_SPACE )
 	{
-		
-		ObjectManager::GetInstance()->CreateObject();
+		basicAttack();
 	}
 
 	if (isJump && isGround)
@@ -156,8 +166,7 @@ int Player::Update()
 		CursorManager::GetInstance()->WriteBuffer(142, 3, (char*)"is ground");
 	}
 		
-	
-	
+
 	move();
 
 	
@@ -211,8 +220,7 @@ int Player::Update()
 void Player::Render()
 {
 	CursorManager::GetInstance()->RenderObj(Enim[currEnim], Info.Scale.y, (int)Info.Scale.x, (int)Info.Position.x, Info.Position.y);
-	CursorManager::GetInstance()->WriteBuffer( Vector3(130,3), Info.Position.x);
-	//OutputManager::OnDrawText(Enim[currEnim], Info.Scale.y, Info.Position.x, Info.Position.y);
+	
 }
 
 void Player::Release()

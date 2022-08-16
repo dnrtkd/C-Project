@@ -11,6 +11,8 @@ Bullet::Bullet()
 	Target = nullptr;
 
 	enim = new Texture[2];
+
+	damage = 0;
 }
 
 Bullet::~Bullet()

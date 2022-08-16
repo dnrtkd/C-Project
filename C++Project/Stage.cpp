@@ -26,9 +26,6 @@ void Stage::Update()
 
 void Stage::Render()
 {
-	CursorManager::GetInstance()->WriteBuffer(0, 37, (char*)"----------------"
-		"---------------------------------------------------------------------"
-		"-------------------------------------------------------------");
 	ObjectManager::GetInstance()->Render();
 }
 

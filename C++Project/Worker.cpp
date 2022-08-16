@@ -6,25 +6,74 @@ void Worker::Start()
 	Enim[0].texture[1] = "| + |";
 	Enim[0].texture[2] = "|   |";
 	Enim[0].texture[3] = "-----";
+	Enim[0].texture[4] = "     ";
+
+	Enim[1].texture[0] = "-----";
+	Enim[1].texture[1] = "| = |";
+	Enim[1].texture[2] = "|   |";
+	Enim[1].texture[3] = "-----";
+	Enim[1].texture[4] = "     ";
 	
+	Info.Position = Vector3(120, 20);
+	Info.Rotation = Vector3(0.0f, 0.0f);
+	Info.Scale = Vector3(strlen("-----"), 5.0f);
+	Info.Direction = Vector3(0.0f, 0.0f);
+	speed.x = -1;
+
+	name = (char*)"¿œ≤€";
 }
 
 int Worker::Update()
 {
+	if (hitTime + 400 < GetTickCount64())
+		eState = ObjState::IDLE;
+
+	isGround();
+	move(0.1f);
+
+	if (eState == ObjState::hit)
+		currEnim = 1;
+	else
+		currEnim = 0;
 	return 0;
 }
 
 void Worker::Render()
 {
+	CursorManager::GetInstance()->RenderObj(Enim[currEnim], 4, 6, Info.Position.x, Info.Position.y,9);
+	
 }
 
 void Worker::Release()
 {
 }
 
+void Worker::hit(float damage,bool left)
+{
+	hp -= damage;
+
+	hitTime = GetTickCount64();
+	eState = ObjState::hit;
+
+	if (left)
+		Info.Position.x += 2;
+	else
+		Info.Position.x -= 2;
+
+	CursorManager::GetInstance()->WriteBuffer(Vector3(Info.Position.x+2,Info.Position.y-2), -damage, 12);
+	if (hp < 0)
+	{
+		hp = 0;
+		eState = ObjState::DEAD;
+	}
+}
+
 Worker::Worker()
 {
-	Enim = new Texture[6];
+	Enim = new Texture[2];
+	maxHp = 500.0f;
+	hp = maxHp;
+	damage = 5.0f;
 }
 
 Worker::~Worker()

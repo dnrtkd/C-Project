@@ -14,6 +14,7 @@ enum class ObjState
 	IDLE,
 	MOVE,
 	DASH,
+	hit,
 	ATTACK,
 	JUMP,
 	DEAD

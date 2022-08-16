@@ -1,6 +1,7 @@
 #pragma once
 #include "Headers.h"
 
+
 class Object;
 class ObjectManager
 {
@@ -16,7 +17,7 @@ public:
 private:
 	Object* pBullet[128];
 	Object* pPlayer;
-	Object* pEnemy;
+	Object* pEnemy[32];
 	Object* pGround[32];
 public:
 	void CreateObject();

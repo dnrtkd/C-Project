@@ -18,16 +18,21 @@ class Player : public Object
 	bool isJump; //점프 했는지 체크
 	
 	float damage; //데미지
-	float hp;
+	float hp; //현재 체력
 	float delay; //공격 대기시간
+	ULONGLONG fireTime;
 public:
 	bool isGround;
+private:
+	void move();
+	void skill_1(); //다수 적 넉백 효과
+
 public:
 	virtual void Start()override;
 	virtual int  Update()override;
 	virtual void Render()override;
 	virtual void Release()override;
-	void move();
+	float getDamage() { return damage; }
 	//objectManager에서 내가 밟고 있는 땅의 포인터를 가져옴
 	void setStepGround( Object* ground)
 	{

@@ -68,7 +68,9 @@ void CursorManager::WriteBuffer(Vector3 _Position, char* _str, int _Color)
 
 void CursorManager::WriteBuffer(Vector3 _Position, int val, int _Color)
 {
-	COORD CursorPosition = { (SHORT)_Position.x , (SHORT)_Position.y };
+	SHORT _x = _Position.x - screenPosiX;
+	SHORT _y = _Position.y - screenPosiY;
+	COORD CursorPosition = { (SHORT) _x, (SHORT) _y };
 
 	SetConsoleCursorPosition(HBuffer[BufferIndex], CursorPosition);
 
@@ -83,7 +85,7 @@ void CursorManager::WriteBuffer(Vector3 _Position, int val, int _Color)
 	WriteFile(HBuffer[BufferIndex], buff, (DWORD)strlen(buff), &dw, NULL);
 }
 
-void CursorManager::RenderObj(const Texture& texture, int sizeY,int sizeX ,float _x, float _y)
+void CursorManager::RenderObj(const Texture& texture, int sizeY,int sizeX ,float _x, float _y,int color)
 {
 	// 출력하고자 하는 오브젝트의 좌표값- 스크린 좌표값을 해줌으로서
 	//스크린 좌표 이동을 구현할 수 있다.
@@ -128,7 +130,7 @@ void CursorManager::RenderObj(const Texture& texture, int sizeY,int sizeX ,float
 		if (y + i < 40 && y + i >= 0)
 		{
 			//if (strlen(texture.texture[i])) //  해당 텍스쳐가 공백 문자열이 아니라면
-				CursorManager::GetInstance()->WriteBuffer(x, y + i,temp);
+				CursorManager::GetInstance()->WriteBuffer(x, y + i,temp,color);
 		}
 	}
 }
