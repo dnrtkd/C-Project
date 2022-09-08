@@ -30,6 +30,55 @@ Player::Player()
 	hp = 50.0f;
 	damage = 5.0f;
 	fireTime = GetTickCount64();
+
+	Enim[0].intPutTexture(" 0  ");
+	Enim[0].intPutTexture("(|o ");
+	Enim[0].intPutTexture(" ^  ");
+	Enim[0].intPutTexture("_.._");
+	
+
+	Enim[1].intPutTexture(" 0  ");
+	Enim[1].intPutTexture("(|o ");
+	Enim[1].intPutTexture(" ^  ");
+	Enim[1].intPutTexture("- ._");
+	
+
+	Enim[2].intPutTexture(" 0  ");
+	Enim[2].intPutTexture("(|o ");
+	Enim[2].intPutTexture(" ^  ");
+	Enim[2].intPutTexture("_. -");
+	
+
+	Enim[3].intPutTexture(" 0  ");
+	Enim[3].intPutTexture("(|o ");
+	Enim[3].intPutTexture("|^| ");
+	
+
+	Enim[4].intPutTexture(" 0  ");
+	Enim[4].intPutTexture("o|) ");
+	Enim[4].intPutTexture(" ^  ");
+	Enim[4].intPutTexture("_.._");
+	
+
+	Enim[5].intPutTexture(" 0  ");
+	Enim[5].intPutTexture("o|) ");
+	Enim[5].intPutTexture(" ^  ");
+	Enim[5].intPutTexture("_. -");
+	
+
+	Enim[6].intPutTexture(" 0  ");
+	Enim[6].intPutTexture("o|) ");
+	Enim[6].intPutTexture(" ^  ");
+	Enim[6].intPutTexture("- ._");
+	
+
+	Enim[7].intPutTexture(" 0  ");
+	Enim[7].intPutTexture("o|) ");
+	Enim[7].intPutTexture("|^| ");
+	
+
+	for (int i = 0; i < 8; ++i)
+		Enim[i].color = 14;
 }
 
 Player::~Player()
@@ -61,53 +110,7 @@ void Player::Start()
 	Info.Direction = Vector3(0.0f, 0.0f);
 	Target = nullptr;
 
-	Enim[0].texture[0] = " 0  ";
-	Enim[0].texture[1] = "(|o ";
-	Enim[0].texture[2] = " ^  ";
-	Enim[0].texture[3] = "_.._";
-	Enim[0].texture[4] = "    ";
-
-	Enim[1].texture[0] = " 0  ";
-	Enim[1].texture[1] = "(|o ";
-	Enim[1].texture[2] = " ^  ";
-	Enim[1].texture[3] = "- ._";
-	Enim[1].texture[4] = "    ";
-
-	Enim[2].texture[0] = " 0  ";
-	Enim[2].texture[1] = "(|o ";
-	Enim[2].texture[2] = " ^  ";
-	Enim[2].texture[3] = "_. -";
-	Enim[2].texture[4] = "    ";
 	
-	Enim[3].texture[0] = " 0  ";
-	Enim[3].texture[1] = "(|o ";
-	Enim[3].texture[2] = "|^| ";
-	Enim[3].texture[3] = "    ";
-	Enim[3].texture[4] = "    ";
-
-	Enim[4].texture[0] = " 0  ";
-	Enim[4].texture[1] = "o|) ";
-	Enim[4].texture[2] = " ^  ";
-	Enim[4].texture[3] = "_.._";
-	Enim[4].texture[4] = "    ";
-
-	Enim[5].texture[0] = " 0  ";
-	Enim[5].texture[1] = "o|) ";
-	Enim[5].texture[2] = " ^  ";
-	Enim[5].texture[3] = "_. -";
-	Enim[5].texture[4] = "    ";
-
-	Enim[6].texture[0] = " 0  ";
-	Enim[6].texture[1] = "o|) ";
-	Enim[6].texture[2] = " ^  ";
-	Enim[6].texture[3] = "- ._";
-	Enim[6].texture[4] = "    ";
-
-	Enim[7].texture[0] = " 0  ";
-	Enim[7].texture[1] = "o|) ";
-	Enim[7].texture[2] = "|^| ";
-	Enim[7].texture[3] = "    ";
-	Enim[7].texture[4] = "    ";
 }
 
 int Player::Update()
@@ -219,7 +222,7 @@ int Player::Update()
 
 void Player::Render()
 {
-	CursorManager::GetInstance()->RenderObj(Enim[currEnim], Info.Scale.y, (int)Info.Scale.x, (int)Info.Position.x, Info.Position.y);
+	CursorManager::GetInstance()->RenderObj(Enim[currEnim],  (int)Info.Position.x, Info.Position.y);
 	
 }
 

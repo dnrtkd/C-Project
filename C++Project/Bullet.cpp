@@ -23,7 +23,7 @@ Bullet::~Bullet()
 
 void Bullet::Start()
 {
-	enim[0].texture[0] = "*";
+	enim[0].intPutTexture ("*");
 
 }
 
@@ -36,7 +36,7 @@ int  Bullet::Update()
 
 void Bullet::Render()
 {
-	CursorManager::GetInstance()->RenderObj(enim[0], Info.Scale.y, Info.Scale.x, 
+	CursorManager::GetInstance()->RenderObj(enim[0], 
 		Info.Position.x, Info.Position.y);
 }
 

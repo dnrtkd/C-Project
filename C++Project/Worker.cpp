@@ -2,17 +2,17 @@
 
 void Worker::Start()
 {
-	Enim[0].texture[0] = "-----";
-	Enim[0].texture[1] = "| + |";
-	Enim[0].texture[2] = "|   |";
-	Enim[0].texture[3] = "-----";
-	Enim[0].texture[4] = "     ";
+	Enim[0].intPutTexture("-----");
+	Enim[0].intPutTexture("| + |");
+	Enim[0].intPutTexture("|   |");
+	Enim[0].intPutTexture("-----");
+	
 
-	Enim[1].texture[0] = "-----";
-	Enim[1].texture[1] = "| = |";
-	Enim[1].texture[2] = "|   |";
-	Enim[1].texture[3] = "-----";
-	Enim[1].texture[4] = "     ";
+	Enim[1].intPutTexture("-----");
+	Enim[1].intPutTexture("| = |");
+	Enim[1].intPutTexture("|   |");
+	Enim[1].intPutTexture("-----");
+	
 	
 	Info.Position = Vector3(120, 20);
 	Info.Rotation = Vector3(0.0f, 0.0f);
@@ -40,7 +40,7 @@ int Worker::Update()
 
 void Worker::Render()
 {
-	CursorManager::GetInstance()->RenderObj(Enim[currEnim], 4, 6, Info.Position.x, Info.Position.y,9);
+	CursorManager::GetInstance()->RenderObj(Enim[currEnim], Info.Position.x, Info.Position.y);
 	
 }
 

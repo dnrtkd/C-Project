@@ -51,8 +51,23 @@ struct Transform
 
 struct Texture
 {
-	const char* texture[5];
+
+	vector<string> texture;
+	int color;
+
+	void intPutTexture(const char* st)
+	{
+		texture.push_back(st);
+	}
+
+	 int getYsize()const { return texture.size(); }
+	 int getXsize()const { return texture[0].size(); }
+
+	 Texture() { color = 15; }
 };
+
+
+
 
 
 

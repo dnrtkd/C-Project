@@ -81,14 +81,14 @@ void ObjectManager::Start()
 
 
 	pGround[0]->SetPosition(0, 35);
-	pGround[1]->SetPosition(50, 35);
-	pGround[2]->SetPosition(100, 35);
-	pGround[3]->SetPosition(150, 35);
-	pGround[4]->SetPosition(200, 35);
-	pGround[5]->SetPosition(250, 35);
-	pGround[6]->SetPosition(100, 20);
-	pGround[7]->SetPosition(200, 25);
-	pGround[8]->SetPosition(150, 30);
+	dynamic_cast<Ground*>(pGround[0])->setSize(150,5);
+
+	pGround[1]->SetPosition(140, 30);
+	dynamic_cast<Ground*>(pGround[1])->setSize(10, 5);
+
+	pGround[2]->SetPosition(50, 25);
+	dynamic_cast<Ground*>(pGround[2])->setSize(90, 5);
+	
 	
 }
 
@@ -182,8 +182,6 @@ void ObjectManager::Update()
 
 void ObjectManager::Render()
 {
-	pPlayer->Render();
-
 	for (size_t i = 0; i < 32; i++)
 	{
 		if(pGround[i])
@@ -201,6 +199,8 @@ void ObjectManager::Render()
 		if (pBullet[i])
 			pBullet[i]->Render();
 	}
+
+	pPlayer->Render();
 }
 
 void ObjectManager::Release()

@@ -85,12 +85,14 @@ void CursorManager::WriteBuffer(Vector3 _Position, int val, int _Color)
 	WriteFile(HBuffer[BufferIndex], buff, (DWORD)strlen(buff), &dw, NULL);
 }
 
-void CursorManager::RenderObj(const Texture& texture, int sizeY,int sizeX ,float _x, float _y,int color)
+void CursorManager::RenderObj(const Texture& texture,float _x, float _y)
 {
 	// 출력하고자 하는 오브젝트의 좌표값- 스크린 좌표값을 해줌으로서
 	//스크린 좌표 이동을 구현할 수 있다.
 	_x = _x - screenPosiX;
 	_y = _y - screenPosiY;
+	int sizeX = texture.getXsize();
+	int sizeY = texture.getYsize();
 
 	//출력하고자 하는 좌표가  행 0~150  열 0~40 범위 밖인 경우 출력 X
 	if (_x >=  maxWidth ||
@@ -101,7 +103,7 @@ void CursorManager::RenderObj(const Texture& texture, int sizeY,int sizeX ,float
 	
 	for (size_t i = 0; i < sizeY; i++)
 	{
-		char temp[128];
+		char temp[256];
 
 		int x = (int)_x;
 		int y = (int)_y;
@@ -125,12 +127,12 @@ void CursorManager::RenderObj(const Texture& texture, int sizeY,int sizeX ,float
 			temp[maxWidth - x] = '\0';
 		}
 		else
-			strcpy_s(temp, texture.texture[i]);
+			strcpy_s(temp, texture.texture[i].c_str());
 
 		if (y + i < 40 && y + i >= 0)
 		{
 			//if (strlen(texture.texture[i])) //  해당 텍스쳐가 공백 문자열이 아니라면
-				CursorManager::GetInstance()->WriteBuffer(x, y + i,temp,color);
+				CursorManager::GetInstance()->WriteBuffer(x, y + i,temp,texture.color);
 		}
 	}
 }
