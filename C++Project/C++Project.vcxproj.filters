@@ -61,9 +61,6 @@
     <Filter Include="헤더 파일\Include">
       <UniqueIdentifier>{1b134bfb-94db-43d8-a815-a50a48d3a682}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Object\Ground">
-      <UniqueIdentifier>{4a94f406-b39c-4462-8285-8be2e96fa077}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\UI">
       <UniqueIdentifier>{2b4bd528-39e1-471a-923d-d3ad8ef00912}</UniqueIdentifier>
     </Filter>
@@ -72,6 +69,15 @@
     </Filter>
     <Filter Include="소스 파일\Manager\ObjectFactory">
       <UniqueIdentifier>{2dfa3cbd-4dec-47e9-aebb-57073df5e525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\RespawnZOne">
+      <UniqueIdentifier>{b14213d8-91ff-44ef-a1c4-253b55373823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\Ground">
+      <UniqueIdentifier>{4a94f406-b39c-4462-8285-8be2e96fa077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MapFile">
+      <UniqueIdentifier>{585f2d29-44c4-4421-b873-18f8e7a6409d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +131,12 @@
     </ClCompile>
     <ClCompile Include="Worker.cpp">
       <Filter>소스 파일\Object\Enemy\Worker</Filter>
+    </ClCompile>
+    <ClCompile Include="RespawnZone.cpp">
+      <Filter>소스 파일\Object\RespawnZOne</Filter>
+    </ClCompile>
+    <ClCompile Include="MapFile.cpp">
+      <Filter>소스 파일\MapFile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +205,12 @@
     </ClInclude>
     <ClInclude Include="ObjectFactory.h">
       <Filter>소스 파일\Manager\ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="RespawnZone.h">
+      <Filter>소스 파일\Object\RespawnZOne</Filter>
+    </ClInclude>
+    <ClInclude Include="MapFile.h">
+      <Filter>소스 파일\MapFile</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

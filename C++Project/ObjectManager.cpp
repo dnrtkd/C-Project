@@ -11,17 +11,7 @@ ObjectManager* ObjectManager::Instance = nullptr;
 
 ObjectManager::ObjectManager() : pPlayer(nullptr)
 {
-	for (int i = 0; i < 128; ++i)
-		pBullet[i] = nullptr;
-
-	for (size_t i = 0; i < 32; i++)
-	{
-		pGround[i] = nullptr;
-	}
-	for (size_t i = 0; i < 16; i++)
-	{
-		pEnemy[i] = nullptr;
-	}
+	
 }
 
 ObjectManager::~ObjectManager()
@@ -29,58 +19,46 @@ ObjectManager::~ObjectManager()
 	Release();
 }
 
-
-void ObjectManager::CreateObject()
+void ObjectManager::AddObject(Object* obj ,string mapName)
 {
-	for (int i = 0; i < 128; ++i)
-	{
-		if (pBullet[i] == nullptr)
-		{
-			pBullet[i] = new Bullet;
-			pBullet[i]->Start();
-			Vector3 vec = pPlayer->GetPosition();
+	//오브젝트의 키를 받아옴
+	string key = obj->GetKey();
 
-			pBullet[i]->SetDirection(pPlayer->GetTransform().Direction.x,0);
-			dynamic_cast<Bullet*> (pBullet[i])->setDamage(dynamic_cast<Player*>(pPlayer)->getDamage());
-
-			if(pPlayer->GetTransform().Direction.x==1)
-				pBullet[i]->SetPosition(vec.x+6,vec.y+2);
-			else
-				pBullet[i]->SetPosition(vec.x -1, vec.y + 2);
-			break;
-		}
-	}
+	auto iter1 = Objects.find(key);
+	
+	Objects[mapName][key].push_back(obj);
+	
 }
+
+//void ObjectManager::CreateObject()
+//{
+//	for (int i = 0; i < 128; ++i)
+//	{
+//		if (pBullet[i] == nullptr)
+//		{
+//			pBullet[i] = new Bullet;
+//			pBullet[i]->Start();
+//			Vector3 vec = pPlayer->GetPosition();
+//
+//			pBullet[i]->SetDirection(pPlayer->GetTransform().Direction.x,0);
+//			dynamic_cast<Bullet*> (pBullet[i])->setDamage(dynamic_cast<Player*>(pPlayer)->getDamage());
+//
+//			if(pPlayer->GetTransform().Direction.x==1)
+//				pBullet[i]->SetPosition(vec.x+6,vec.y+2);
+//			else
+//				pBullet[i]->SetPosition(vec.x -1, vec.y + 2);
+//			break;
+//		}
+//	}
+//}
 
 void ObjectManager::Start()
 {
 	pPlayer = new Player;
 	pPlayer->Start();
 
-	for (size_t i = 0; i < 16; i++)
-	{
-		pEnemy[i] = new Worker;
-		pEnemy[i] -> Start();
-	}
 
-	for (size_t i = 0; i < 32; i++)
-	{
-		pGround[i] = new Ground;
-		pGround[i]->Start();
-	}
-
-	pEnemy[0]->SetPosition(120, 15);
-	pEnemy[1]->SetPosition(130, 15);
-	pEnemy[2]->SetPosition(140, 15);
-	pEnemy[3]->SetPosition(200, 15);
-	pEnemy[4]->SetPosition(245, 15);
-	pEnemy[5]->SetPosition(275, 15);
-	pEnemy[6]->SetPosition(285, 15);
-	pEnemy[7]->SetPosition(295, 15);
-
-
-
-	pGround[0]->SetPosition(0, 35);
+	/*pGround[0]->SetPosition(0, 35);
 	dynamic_cast<Ground*>(pGround[0])->setSize(150,5);
 
 	pGround[1]->SetPosition(140, 30);
@@ -88,7 +66,7 @@ void ObjectManager::Start()
 
 	pGround[2]->SetPosition(50, 25);
 	dynamic_cast<Ground*>(pGround[2])->setSize(90, 5);
-	
+	*/
 	
 }
 
@@ -106,6 +84,30 @@ void ObjectManager::Update()
 				delete pEnemy[i];
 				pEnemy[i] = nullptr;
 			}
+		}
+	}
+
+	//가장 상위 : 맵에 속한 몬스터
+	for (auto i : Objects)
+	{
+		for (auto j : i.second)
+		{
+			// 에너미 업데이트
+			if (j.first == "Enemy")
+			{
+				for (auto iter = j.second.begin(); iter < j.second.end(); ++iter)
+				{
+					(*iter)->Update();
+
+					if (dynamic_cast<Enemy*>((*iter))->getState() == ObjState::DEAD)
+					{
+						j.second.erase(iter);
+					}
+					
+				}
+			}
+			
+
 		}
 	}
 

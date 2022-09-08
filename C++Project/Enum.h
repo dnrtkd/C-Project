@@ -26,3 +26,15 @@ enum class ObjTag
 	Enemy,
 	Player
 };
+
+enum class MonName
+{
+	Worker,
+	solider
+};
+
+enum class MapName
+{
+	viliage,
+	startHunt
+};

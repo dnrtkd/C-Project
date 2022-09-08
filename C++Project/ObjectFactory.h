@@ -1,6 +1,7 @@
 #pragma once
 #include "Headers.h"
 #include"Object.h"
+#include"ObjectManager.h"
 
 class ObjectFactory
 {
@@ -11,6 +12,8 @@ public:
 		Object* pObject = new T;
 		pObject->Start();
 		pObject->SetPosition(_position);
+
+		ObjectManager::GetInstance()->AddObject()
 
 		return pObject;
 	}

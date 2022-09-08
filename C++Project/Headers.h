@@ -4,6 +4,8 @@
 #include<windows.h>
 #include<string>
 #include<vector>
+#include<map>
+#include<deque>
 
 using namespace std;
 

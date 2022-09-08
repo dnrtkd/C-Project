@@ -1,5 +1,6 @@
 #pragma once
-
+#include <vector>
+#include <string>
 
 struct Vector3
 {
@@ -65,6 +66,16 @@ struct Texture
 
 	 Texture() { color = 15; }
 };
+
+
+
+struct MapInfo
+{
+	string name;
+	
+	
+};
+
 
 
 
