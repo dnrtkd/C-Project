@@ -21,14 +21,15 @@ private:
 	map<string, map<string,deque<Object*>>> Objects;
 	//현재의 맵이름. 현재 맵만 렌더링 해야함
 	string currMapName;
-	
+
 public:
 	void AddObject(Object* obj,string mapName);
-	void CreateObject();
+	//void CreateObject();
 	void Start();
 	void Update();
 	void Render();
 	void Release();
+	void setMapName(string mName) { currMapName = mName; }
 private:
 	ObjectManager();
 public:

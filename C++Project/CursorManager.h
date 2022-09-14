@@ -41,7 +41,7 @@ public:
 		if (screenPosiY < 0)
 			screenPosiY = 0;
 	}
-
+	void setScreen(float x, float y) { screenPosiX = x; screenPosiY = y; }
 	float getScrPosiX() { return screenPosiX; }
 	float getScrPosiY() { return screenPosiY; }
 

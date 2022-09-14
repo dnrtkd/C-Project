@@ -79,6 +79,9 @@
     <Filter Include="소스 파일\MapFile">
       <UniqueIdentifier>{585f2d29-44c4-4421-b873-18f8e7a6409d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MapFile\BegginerHunt">
+      <UniqueIdentifier>{f536bf9c-ece2-454f-89a1-73dec2b0b282}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -137,6 +140,9 @@
     </ClCompile>
     <ClCompile Include="MapFile.cpp">
       <Filter>소스 파일\MapFile</Filter>
+    </ClCompile>
+    <ClCompile Include="BegginerHunt.cpp">
+      <Filter>소스 파일\MapFile\BegginerHunt</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="MapFile.h">
       <Filter>소스 파일\MapFile</Filter>
+    </ClInclude>
+    <ClInclude Include="BegginerHunt.h">
+      <Filter>소스 파일\MapFile\BegginerHunt</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

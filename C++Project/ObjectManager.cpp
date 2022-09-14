@@ -11,7 +11,10 @@ ObjectManager* ObjectManager::Instance = nullptr;
 
 ObjectManager::ObjectManager() : pPlayer(nullptr)
 {
-	
+	//map<string, deque<Object*>> t;
+	//deque<Object*> t2;
+	//t.insert(make_pair("Ground", t2));
+	//Objects.insert(make_pair("BegginerHunt", t));
 }
 
 ObjectManager::~ObjectManager()
@@ -23,9 +26,6 @@ void ObjectManager::AddObject(Object* obj ,string mapName)
 {
 	//오브젝트의 키를 받아옴
 	string key = obj->GetKey();
-
-	auto iter1 = Objects.find(key);
-	
 	Objects[mapName][key].push_back(obj);
 	
 }
@@ -72,7 +72,9 @@ void ObjectManager::Start()
 
 void ObjectManager::Update()
 {
+	CursorManager::GetInstance()->WriteBuffer(Vector3(140, 2), Objects["BegginerHunt"]["Ground"].size());
 	pPlayer->Update();
+	/*
 	for (size_t i = 0; i < 16; i++)
 	{
 		if (pEnemy[i])
@@ -85,7 +87,7 @@ void ObjectManager::Update()
 				pEnemy[i] = nullptr;
 			}
 		}
-	}
+	}*/
 
 	//가장 상위 : 맵에 속한 몬스터
 	for (auto i : Objects)
@@ -101,17 +103,71 @@ void ObjectManager::Update()
 
 					if (dynamic_cast<Enemy*>((*iter))->getState() == ObjState::DEAD)
 					{
+						delete (*iter);
+						(*iter) = nullptr;
 						j.second.erase(iter);
 					}
 					
 				}
 			}
-			
+			if (j.first == "Ground")
+			{
+				for (auto iter = j.second.begin(); iter < j.second.end(); ++iter)
+				{
+					if ((*iter)->GetPosition().y > pPlayer->GetPosition().y &&
+						CollisionManager::RectCollision((*iter)->GetTransform(), pPlayer->GetTransform()))
+					{
+						dynamic_cast<Player*>(pPlayer)->isGround = true;
+						dynamic_cast<Player*>(pPlayer)->setStepGround((*iter));
+						pPlayer->SetPosition(Vector3(pPlayer->GetPosition().x,
+							(*iter)->GetPosition().y - pPlayer->GetTransform().Scale.y + 1));
+					}
+					for (auto enemy : i.second["Enemy"])
+					{
+						if ((*iter)->GetPosition().y > enemy->GetPosition().y &&
+							CollisionManager::RectCollision((*iter)->GetTransform(), enemy->GetTransform()))
+						{
+							dynamic_cast<Enemy*>(enemy)->setStepGround((*iter));
+						}
+					}
+				}
+			}
+			if (j.first == "Enemy")
+			{
+				int result = 0;
+				for (auto iter = j.second.begin(); iter < j.second.end(); ++iter)
+				{
+					result = (*iter)->Update();
 
+					float scrX = CursorManager::GetInstance()->getScrPosiX();
+					if ((*iter)->GetPosition().x - scrX < 0 || (*iter)->GetPosition().x - scrX>150)
+					{
+						result = 1;
+					}
+
+					for (auto enemy : i.second["Enemy"])
+					{
+						//총알과 에너미의 충돌 부분
+						if (CollisionManager::RectCollision((*iter)->GetTransform(), enemy->GetTransform()))
+						{
+							bool left = false;
+							if (pPlayer->GetPosition().x < enemy->GetPosition().x)
+								left = true;
+							dynamic_cast<Enemy*>(enemy)->hit(dynamic_cast<Bullet*>((*iter))->getDamage(), left);
+							result = 1;
+						}
+					}
+					if (result == 1)
+					{
+						delete (*iter);
+						j.second.erase(iter);
+					}
+				}
+			}
 		}
 	}
 
-	for (size_t i = 0; i < 32; i++)
+	/*for (size_t i = 0; i < 32; i++)
 	{
 		if (pGround[i])
 		{
@@ -136,72 +192,65 @@ void ObjectManager::Update()
 				}
 			}
 		}
-	}
+	}*/
 
 	
 
-	int result = 0;
-	for (int i = 0; i < 128; ++i)
-	{
-		if (pBullet[i])
-		{
-			result = pBullet[i]->Update();
+	//int result = 0;
+	//for (int i = 0; i < 128; ++i)
+	//{
+	//	if (pBullet[i])
+	//	{
+	//		result = pBullet[i]->Update();
 
-			float scrX = CursorManager::GetInstance()->getScrPosiX();
-			if (pBullet[i]->GetPosition().x - scrX < 0 || pBullet[i]->GetPosition().x - scrX>150)
-			{
-				result = 1;
-			}
-			
-			for (size_t j = 0; j < 16; j++)
-			{
-				if (pEnemy[j])
-				{
-					//총알과 에너미의 충돌 부분
-					if (CollisionManager::RectCollision(pBullet[i]->GetTransform(), pEnemy[j]->GetTransform()))
-					{
-						bool left = false;
-						if (pPlayer->GetPosition().x < pEnemy[j]->GetPosition().x)
-							left = true;
-						dynamic_cast<Enemy*>(pEnemy[j])->hit(dynamic_cast<Bullet*>(pBullet[i])->getDamage(),left);
-						result = 1;
-					}
-				}
-			}
+	//		float scrX = CursorManager::GetInstance()->getScrPosiX();
+	//		if (pBullet[i]->GetPosition().x - scrX < 0 || pBullet[i]->GetPosition().x - scrX>150)
+	//		{
+	//			result = 1;
+	//		}
+	//		
+	//		for (size_t j = 0; j < 16; j++)
+	//		{
+	//			if (pEnemy[j])
+	//			{
+	//				//총알과 에너미의 충돌 부분
+	//				if (CollisionManager::RectCollision(pBullet[i]->GetTransform(), pEnemy[j]->GetTransform()))
+	//				{
+	//					bool left = false;
+	//					if (pPlayer->GetPosition().x < pEnemy[j]->GetPosition().x)
+	//						left = true;
+	//					dynamic_cast<Enemy*>(pEnemy[j])->hit(dynamic_cast<Bullet*>(pBullet[i])->getDamage(),left);
+	//					result = 1;
+	//				}
+	//			}
+	//		}
 
 
-		}
+	//	}
 
-		if (result == 1)
-		{
-			delete pBullet[i];
-			pBullet[i] = nullptr;
-		}
-	}
+	//	if (result == 1)
+	//	{
+	//		delete pBullet[i];
+	//		pBullet[i] = nullptr;
+	//	}
+	//}
 
 	
 }
 
 void ObjectManager::Render()
 {
-	for (size_t i = 0; i < 32; i++)
+	for (auto i : Objects)
 	{
-		if(pGround[i])
-		pGround[i]->Render();
+		if (i.first == currMapName)
+		{
+			for (auto j : i.second)
+			{
+				for (auto k : j.second)
+					k->Render();
+			}
+		}
 	}
-
-	for (size_t i = 0; i < 16; i++)
-	{
-		if(pEnemy[i])
-		pEnemy[i]->Render();
-	}
-
-	for (int i = 0; i < 128; ++i)
-	{
-		if (pBullet[i])
-			pBullet[i]->Render();
-	}
-
 	pPlayer->Render();
 }
 
@@ -211,7 +260,7 @@ void ObjectManager::Release()
 	pPlayer = nullptr;
 
 
-	for (int i = 0; i < 128; ++i)
+	/*for (int i = 0; i < 128; ++i)
 	{
 		if (pBullet[i])
 		{
@@ -224,5 +273,5 @@ void ObjectManager::Release()
 	{
 		delete pGround[i];
 		pGround[i] = nullptr;
-	}
+	}*/
 }

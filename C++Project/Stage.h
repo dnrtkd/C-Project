@@ -1,8 +1,10 @@
 #pragma once
 #include "Scene.h"
-
+#include "MapFile.h"
 class Stage : public Scene
 {
+	vector<MapFile*> Maps;
+	int currMapIndex;
 public:
 	virtual void Start()override;
 	virtual void Update()override;

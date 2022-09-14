@@ -24,6 +24,7 @@ void Ground::Release()
 Ground::Ground()
 {
 	tag = ObjTag::Ground;
+	key = "Ground";
 	Sprite.intPutTexture("");
 	//Sprite.intPutTexture("=");
 	//Sprite.intPutTexture("=");
