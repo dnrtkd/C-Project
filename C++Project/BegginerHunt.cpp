@@ -1,6 +1,4 @@
 #include "BegginerHunt.h"
-#include "Ground.h"
-#include "ObjectFactory.h"
 
 void BegginerHunt::Start()
 {
@@ -16,6 +14,9 @@ void BegginerHunt::Start()
 	 ObjectFactory::CreateGround(Vector3(35, 80), MapName, 10, 5);
 	 ObjectFactory::CreateGround(Vector3(35, 70), MapName, 10, 5);
 	 ObjectFactory::CreateGround(Vector3(35, 60), MapName, 10, 5);
+
+	 // 텔레포트
+	 ObjectFactory::CreateTeleport(Vector3(180, 90), MapName, "BegginerHunt2");
 	 
 }
 

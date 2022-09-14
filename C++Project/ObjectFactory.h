@@ -4,6 +4,7 @@
 #include"ObjectManager.h"
 #include "Worker.h"
 #include "Ground.h"
+#include "MoveTeleport.h"
 
 class ObjectFactory
 {
@@ -11,10 +12,9 @@ public:
 	static Object* CreateObject(Vector3 _position,string mapN,string monN)
 	{
 		Object* pObject = nullptr;
-		if(monN=="Worker")
-	       pObject = new Worker;
-
-
+		if (monN == "Worker")
+			pObject = new Worker;
+		
 		pObject->Start();
 		pObject->SetPosition(_position);
 
@@ -29,6 +29,19 @@ public:
 		pObject->Start();
 		pObject->SetPosition(_position);
 		dynamic_cast<Ground*>(pObject)->setSize(sizeW, sizeH);
+
+		ObjectManager::GetInstance()->AddObject(pObject, mapN);
+
+		return pObject;
+	}
+	static Object* CreateTeleport(Vector3 _position, string mapN, string NextMap)
+	{
+		Object* pObject = new MoveTeleport;
+		dynamic_cast<MoveTeleport*>(pObject)->setMapName(NextMap);
+
+		pObject->Start();
+		pObject->SetPosition(_position);
+	
 
 		ObjectManager::GetInstance()->AddObject(pObject, mapN);
 

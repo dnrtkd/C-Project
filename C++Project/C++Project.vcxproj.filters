@@ -82,6 +82,15 @@
     <Filter Include="소스 파일\MapFile\BegginerHunt">
       <UniqueIdentifier>{f536bf9c-ece2-454f-89a1-73dec2b0b282}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MapFile\BegginerHunt2">
+      <UniqueIdentifier>{6d84b9fe-390d-484b-8e68-dc75a051906f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MapFile\Village">
+      <UniqueIdentifier>{c5fd9a8a-163b-4cf5-851f-bd76c893094f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\MoveTeleport">
+      <UniqueIdentifier>{90292cb2-aa15-4578-a8e0-24f38c70b0b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -143,6 +152,12 @@
     </ClCompile>
     <ClCompile Include="BegginerHunt.cpp">
       <Filter>소스 파일\MapFile\BegginerHunt</Filter>
+    </ClCompile>
+    <ClCompile Include="BegginerHunt2.cpp">
+      <Filter>소스 파일\MapFile\BegginerHunt2</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveTeleport.cpp">
+      <Filter>소스 파일\Object\MoveTeleport</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +235,12 @@
     </ClInclude>
     <ClInclude Include="BegginerHunt.h">
       <Filter>소스 파일\MapFile\BegginerHunt</Filter>
+    </ClInclude>
+    <ClInclude Include="BegginerHunt2.h">
+      <Filter>소스 파일\MapFile\BegginerHunt2</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveTeleport.h">
+      <Filter>소스 파일\Object\MoveTeleport</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

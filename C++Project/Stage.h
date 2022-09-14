@@ -3,8 +3,10 @@
 #include "MapFile.h"
 class Stage : public Scene
 {
-	vector<MapFile*> Maps;
-	int currMapIndex;
+	map<string,MapFile*> Maps;
+	string currMap;
+
+	void pushMap(MapFile* map);
 public:
 	virtual void Start()override;
 	virtual void Update()override;
