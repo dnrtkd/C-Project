@@ -34,14 +34,36 @@ public:
 		screenPosiX += x; 
 		if (screenPosiX < 0)
 			screenPosiX = 0;
+
+		if (screenPosiX > 50)
+			screenPosiX = 50;
 	}
 	void addScreenPosiY(float y) 
 	{ 
 		screenPosiY += y; 
+		if (screenPosiY < 0 )
+			screenPosiY = 0;
+
+		if (screenPosiY > 60)
+			screenPosiY = 60;
+	}
+	void setScreen(float x, float y) 
+	{ 
+		screenPosiX = x; 
+		screenPosiY = y;
+
+		if (screenPosiX < 0)
+			screenPosiX = 0;
+
+		if (screenPosiX > 50)
+			screenPosiX = 50;
+
 		if (screenPosiY < 0)
 			screenPosiY = 0;
+
+		if (screenPosiY > 60)
+			screenPosiY = 60;
 	}
-	void setScreen(float x, float y) { screenPosiX = x; screenPosiY = y; }
 	float getScrPosiX() { return screenPosiX; }
 	float getScrPosiY() { return screenPosiY; }
 

@@ -39,7 +39,7 @@ void Stage::Start()
 void Stage::Update()
 {
 	ObjectManager::GetInstance()->Update();
-	CursorManager::GetInstance()->WriteBuffer(5, 2, (char*)currMap.c_str());
+	
 }
 
 void Stage::Render()

@@ -5,13 +5,14 @@
 #include "OutputManager.h"
 #include "CollisionManager.h"
 #include "ObjectManager.h"
+#include "ObjectFactory.h"
 
 void Player::basicAttack()
 {
 	if (fireTime + delay * 1000 < GetTickCount64())
 	{
 		fireTime = GetTickCount64();
-		//ObjectManager::GetInstance()->CreateObject();
+		ObjectFactory::CreateBullet(Info.Position, ObjectManager::GetInstance()->getMapName(), damage,Info.Direction);
 	}
 }
 
@@ -93,7 +94,7 @@ void Player::move()
 	if (speed.y > 0)
 		Info.Direction.y = 1;
 
-	if (Info.Position.x - CursorManager::GetInstance()->getScrPosiX() > 90 && Info.Direction.x==1)
+	/*if (Info.Position.x - CursorManager::GetInstance()->getScrPosiX() > 90 && Info.Direction.x==1)
 		CursorManager::GetInstance()->addScreenPosiX(speed.x);
 
 	if (Info.Position.x - CursorManager::GetInstance()->getScrPosiX() < 60 && Info.Direction.x == -1)
@@ -103,7 +104,7 @@ void Player::move()
 		CursorManager::GetInstance()->addScreenPosiY(speed.y);
 
 	if (Info.Position.y - CursorManager::GetInstance()->getScrPosiY() > 24 && Info.Direction.y == 1)
-		CursorManager::GetInstance()->addScreenPosiY(speed.y);
+		CursorManager::GetInstance()->addScreenPosiY(speed.y);*/
 
 	Info.Position += Vector3(speed.x , speed.y );
 }
@@ -126,6 +127,20 @@ void Player::Start()
 
 int Player::Update()
 {
+	if (Info.Position.x - CursorManager::GetInstance()->getScrPosiX() > 90 )
+		CursorManager::GetInstance()->addScreenPosiX(2);
+
+	if (Info.Position.x - CursorManager::GetInstance()->getScrPosiX() < 60 )
+		CursorManager::GetInstance()->addScreenPosiX(-2);
+
+	if (Info.Position.y - CursorManager::GetInstance()->getScrPosiY() < 16 )
+		CursorManager::GetInstance()->addScreenPosiY(-1);
+
+	if (Info.Position.y - CursorManager::GetInstance()->getScrPosiY() > 24 )
+		CursorManager::GetInstance()->addScreenPosiY(2);
+
+
+
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
 	PlayerState = ObjState::IDLE;
 	speed.x = 0;

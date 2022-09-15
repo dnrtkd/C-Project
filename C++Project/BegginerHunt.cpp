@@ -16,7 +16,7 @@ void BegginerHunt::Start()
 	 ObjectFactory::CreateGround(Vector3(35, 60), MapName, 10, 5);
 
 	 // 텔레포트
-	 ObjectFactory::CreateTeleport(Vector3(180, 90), MapName, "BegginerHunt2");
+	 ObjectFactory::CreateTeleport(Vector3(180, 90), MapName, "BegginerHunt2",Vector3(5,90));
 	 
 }
 

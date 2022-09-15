@@ -15,6 +15,8 @@ void BegginerHunt2::Start()
 	ObjectFactory::CreateGround(Vector3(85, 80), MapName, 10, 5);
 	ObjectFactory::CreateGround(Vector3(85, 70), MapName, 10, 5);
 	ObjectFactory::CreateGround(Vector3(85, 60), MapName, 10, 5);
+
+	ObjectFactory::CreateTeleport(Vector3(5, 90), MapName, "BegginerHunt", Vector3(180, 90));
 }
 
 int BegginerHunt2::Update()

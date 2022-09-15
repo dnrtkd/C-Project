@@ -28,7 +28,7 @@ void InputManager::CheckKey()
 	if (GetAsyncKeyState(VK_RIGHT) || GetAsyncKeyState('D'))
 		dwKey |= KEY_RIGHT;
 
-	if (GetAsyncKeyState(VK_SPACE))
+	if (GetAsyncKeyState(VK_SPACE) & 0x01)
 		dwKey |= KEY_SPACE;
 
 	if (GetAsyncKeyState(VK_RETURN))

@@ -29,7 +29,7 @@ void ObjectManager::AddObject(Object* obj ,string mapName)
 	//오브젝트의 키를 받아옴
 	string key = obj->GetKey();
 	Objects[mapName][key].push_back(obj);
-	
+	telpoTime = GetTickCount64();
 }
 
 //void ObjectManager::CreateObject()
@@ -143,7 +143,7 @@ void ObjectManager::Update()
 						}
 					}
 				}
-				if (j.first == "Enemy")
+				if (j.first == "Bullet")
 				{
 					int result = 0;
 					for (auto iter = j.second.begin(); iter < j.second.end(); ++iter)
@@ -182,8 +182,19 @@ void ObjectManager::Update()
 					{
 						i->Update();
 						if (CollisionManager::RectCollision(i->GetTransform(), pPlayer->GetTransform()))
+						{
 							if (InputManager::GetInstance()->GetKey() == KEY_SPACE)
-								setMapName(dynamic_cast<MoveTeleport*>(i)->getNextMap());
+							{
+								if (telpoTime+1000 < GetTickCount64())
+								{
+									telpoTime = GetTickCount64();
+									setMapName(dynamic_cast<MoveTeleport*>(i)->getNextMap());
+									pPlayer->SetPosition(dynamic_cast<MoveTeleport*>(i)->getNextPosi());
+									CursorManager::GetInstance()->GetInstance()->setScreen(pPlayer->GetPosition().x, pPlayer->GetPosition().y);
+								}
+							}
+						}
+							
 					}
 				}
 			}
@@ -208,15 +219,13 @@ void ObjectManager::Render()
 		}
 	}
 	pPlayer->Render();
-
-	CursorManager::GetInstance()->WriteBuffer(10, 2, (char*)currMapName.c_str());
+	CursorManager::GetInstance()->WriteBuffer(100, 2, (char*)currMapName.c_str());
 }
 
 void ObjectManager::Release()
 {
 	delete pPlayer;
 	pPlayer = nullptr;
-
 
 	/*for (int i = 0; i < 128; ++i)
 	{
