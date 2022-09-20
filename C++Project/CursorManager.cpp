@@ -66,6 +66,8 @@ void CursorManager::WriteBuffer(Vector3 _Position, char* _str, int _Color)
 	WriteFile(HBuffer[BufferIndex], _str, (DWORD)strlen(_str), &dw, NULL);
 }
 
+
+
 void CursorManager::WriteBuffer(Vector3 _Position, int val, int _Color)
 {
 	SHORT _x = _Position.x - screenPosiX;
@@ -85,12 +87,16 @@ void CursorManager::WriteBuffer(Vector3 _Position, int val, int _Color)
 	WriteFile(HBuffer[BufferIndex], buff, (DWORD)strlen(buff), &dw, NULL);
 }
 
-void CursorManager::RenderObj(const Texture& texture,float _x, float _y)
+void CursorManager::RenderObj(const Texture& texture,float _x, float _y,bool screen)
 {
+
+	if (!screen)
+	{
 	// 출력하고자 하는 오브젝트의 좌표값- 스크린 좌표값을 해줌으로서
 	//스크린 좌표 이동을 구현할 수 있다.
-	_x = _x - screenPosiX;
-	_y = _y - screenPosiY;
+		_x = _x - screenPosiX;
+		_y = _y - screenPosiY;
+	}
 	int sizeX = texture.getXsize();
 	int sizeY = texture.getYsize();
 

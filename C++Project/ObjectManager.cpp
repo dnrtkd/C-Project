@@ -8,6 +8,7 @@
 #include "Worker.h"
 #include "InputManager.h"
 #include"MoveTeleport.h"
+#include "ObjectFactory.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -91,7 +92,7 @@ void ObjectManager::Update()
 	}*/
 
 	//가장 상위 : 맵에 속한 몬스터
-	for (auto i : Objects)
+	for (auto &i : Objects)
 	{
 		if (i.first != currMapName)
 		{
@@ -103,27 +104,27 @@ void ObjectManager::Update()
 		}
 		else 
 		{
-			for (auto j : i.second)
+			for (auto &j : i.second)
 			{
 				// 에너미 업데이트
 				if (j.first == "Enemy")
 				{
-					for (auto iter = j.second.begin(); iter < j.second.end(); ++iter)
+					for (auto iter = j.second.begin(); iter != j.second.end(); )
 					{
 						(*iter)->Update();
 
 						if (dynamic_cast<Enemy*>((*iter))->getState() == ObjState::DEAD)
 						{
 							delete (*iter);
-							(*iter) = nullptr;
-							j.second.erase(iter);
+							iter=j.second.erase(iter);
 						}
-
+						else
+							++iter;
 					}
 				}
 				if (j.first == "Ground")
 				{
-					for (auto iter = j.second.begin(); iter < j.second.end(); ++iter)
+					for (auto iter = j.second.begin(); iter != j.second.end(); ++iter)
 					{
 						if ((*iter)->GetPosition().y > pPlayer->GetPosition().y &&
 							CollisionManager::RectCollision((*iter)->GetTransform(), pPlayer->GetTransform()))
@@ -133,20 +134,22 @@ void ObjectManager::Update()
 							pPlayer->SetPosition(Vector3(pPlayer->GetPosition().x,
 								(*iter)->GetPosition().y - pPlayer->GetTransform().Scale.y + 1));
 						}
-						for (auto enemy : i.second["Enemy"])
+						for (auto &enemy : i.second["Enemy"])
 						{
 							if ((*iter)->GetPosition().y > enemy->GetPosition().y &&
 								CollisionManager::RectCollision((*iter)->GetTransform(), enemy->GetTransform()))
 							{
+				
 								dynamic_cast<Enemy*>(enemy)->setStepGround((*iter));
 							}
 						}
+						dynamic_cast<Ground*>(*iter)->createMon();
 					}
 				}
 				if (j.first == "Bullet")
 				{
 					int result = 0;
-					for (auto iter = j.second.begin(); iter < j.second.end(); ++iter)
+					for (auto iter = j.second.begin(); iter != j.second.end(); )
 					{
 						result = (*iter)->Update();
 
@@ -156,29 +159,37 @@ void ObjectManager::Update()
 							result = 1;
 						}
 
-						for (auto enemy : i.second["Enemy"])
+						for (auto &enemy : i.second["Enemy"])
 						{
 							//총알과 에너미의 충돌 부분
 							if (CollisionManager::RectCollision((*iter)->GetTransform(), enemy->GetTransform()))
 							{
+								float damage = dynamic_cast<Bullet*>((*iter))->getDamage();
 								bool left = false;
 								if (pPlayer->GetPosition().x < enemy->GetPosition().x)
 									left = true;
-								dynamic_cast<Enemy*>(enemy)->hit(dynamic_cast<Bullet*>((*iter))->getDamage(), left);
+								dynamic_cast<Enemy*>(enemy)->hit(damage, left);
+
+								Object* temp = ObjectFactory::CreateObject(Vector3(enemy->GetPosition().x + 2,
+									enemy->GetPosition().y - 2), currMapName, "Damage");
+
+								dynamic_cast<Damage*>(temp)->setDamageText(damage);
 								result = 1;
 							}
 						}
 						if (result == 1)
 						{
 							delete (*iter);
-							j.second.erase(iter);
+							iter=j.second.erase(iter);
 						}
+						else
+							++iter;
 					}
 				}
 				//텔레포트는 객체가 파괴되지 않기 때문에 범위 for문으로 순회
 				if (j.first == "Teleport")
 				{
-					for (auto i : j.second)
+					for (auto &i : j.second)
 					{
 						i->Update();
 						if (CollisionManager::RectCollision(i->GetTransform(), pPlayer->GetTransform()))
@@ -197,6 +208,19 @@ void ObjectManager::Update()
 							
 					}
 				}
+				if (j.first == "Effect")
+					for (auto iter=j.second.begin();iter!=j.second.end();)
+					{
+						(*iter)->Update();
+						if (dynamic_cast<Effect*>(*iter)->getDisapear())
+						{
+							delete (*iter);
+							iter=j.second.erase(iter);
+						}
+						else
+							++iter;
+					}
+						
 			}
 		}
 		
@@ -219,7 +243,7 @@ void ObjectManager::Render()
 		}
 	}
 	pPlayer->Render();
-	CursorManager::GetInstance()->WriteBuffer(100, 2, (char*)currMapName.c_str());
+	
 }
 
 void ObjectManager::Release()

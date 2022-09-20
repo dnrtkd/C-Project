@@ -67,12 +67,7 @@ struct Texture
 	 Texture() { color = 15; }
 };
 
-struct MapInfo
-{
-	string name;
-	
-	
-};
+
 
 
 

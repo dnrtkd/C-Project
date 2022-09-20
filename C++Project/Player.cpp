@@ -181,6 +181,11 @@ int Player::Update()
 
 	if (dwKey & KEY_SPACE )
 	{
+		//basicAttack();
+	}
+
+	if (dwKey & KEY_RETURN)
+	{
 		basicAttack();
 	}
 

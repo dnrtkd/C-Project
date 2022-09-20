@@ -1,15 +1,16 @@
 #include "Worker.h"
+#include "ObjectFactory.h"
 
 void Worker::Start()
 {
 	Enim[0].intPutTexture("-----");
-	Enim[0].intPutTexture("| + |");
+	Enim[0].intPutTexture("|+.+|");
 	Enim[0].intPutTexture("|   |");
 	Enim[0].intPutTexture("-----");
 	
 
 	Enim[1].intPutTexture("-----");
-	Enim[1].intPutTexture("| = |");
+	Enim[1].intPutTexture("|!.!|");
 	Enim[1].intPutTexture("|   |");
 	Enim[1].intPutTexture("-----");
 	
@@ -60,7 +61,8 @@ void Worker::hit(float damage,bool left)
 	else
 		Info.Position.x -= 2;
 
-	CursorManager::GetInstance()->WriteBuffer(Vector3(Info.Position.x+2,Info.Position.y-2), -damage, 12);
+	
+	//CursorManager::GetInstance()->WriteBuffer(Vector3(Info.Position.x+2,Info.Position.y-2), -damage, 12);
 	if (hp < 0)
 	{
 		hp = 0;
@@ -71,7 +73,7 @@ void Worker::hit(float damage,bool left)
 Worker::Worker()
 {
 	Enim = new Texture[2];
-	maxHp = 500.0f;
+	maxHp = 10.0f;
 	hp = maxHp;
 	damage = 5.0f;
 }

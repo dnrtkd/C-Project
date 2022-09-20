@@ -17,7 +17,7 @@ Bullet::Bullet()
 
 Bullet::~Bullet()
 {
-
+	Release();
 }
 
 
@@ -42,5 +42,5 @@ void Bullet::Render()
 
 void Bullet::Release()
 {
-
+	//delete[] enim;
 }

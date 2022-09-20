@@ -6,6 +6,9 @@
 #include "Ground.h"
 #include "MoveTeleport.h"
 #include "Bullet.h"
+#include "Cloud.h"
+#include "Tree.h"
+#include "Damage.h"
 
 class ObjectFactory
 {
@@ -15,6 +18,12 @@ public:
 		Object* pObject = nullptr;
 		if (monN == "Worker")
 			pObject = new Worker;
+		if (monN == "Cloud")
+			pObject = new Cloud;
+		if (monN == "Tree")
+			pObject = new Tree;
+		if (monN == "Damage")
+			pObject = new Damage;
 		
 		pObject->Start();
 		pObject->SetPosition(_position);

@@ -1,8 +1,10 @@
 #pragma once
 #include "Object.h"
+#include "RespawnZone.h"
 class Ground :public Object
 {
 	Texture Sprite;
+	RespawnZone* resZone;
 public:
 	virtual void Start()override;
 	virtual int Update()override;
@@ -27,6 +29,12 @@ public:
 		}
 	}
 
+	void setResZone(float res, int _maxMonNum, string monN)
+	{
+		resZone = new RespawnZone(res, _maxMonNum, monN, Info.Position);
+	}
+	void monNumMasage(int num) { if (resZone)resZone->setCurrMon(num); }
+	void createMon() { if (resZone)resZone->createMon(); }
 public:
 	Ground();
 	virtual ~Ground();

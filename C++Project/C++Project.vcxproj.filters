@@ -70,9 +70,6 @@
     <Filter Include="소스 파일\Manager\ObjectFactory">
       <UniqueIdentifier>{2dfa3cbd-4dec-47e9-aebb-57073df5e525}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Object\RespawnZOne">
-      <UniqueIdentifier>{b14213d8-91ff-44ef-a1c4-253b55373823}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Object\Ground">
       <UniqueIdentifier>{4a94f406-b39c-4462-8285-8be2e96fa077}</UniqueIdentifier>
     </Filter>
@@ -90,6 +87,24 @@
     </Filter>
     <Filter Include="소스 파일\Object\MoveTeleport">
       <UniqueIdentifier>{90292cb2-aa15-4578-a8e0-24f38c70b0b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\BgImage">
+      <UniqueIdentifier>{240b3af1-3a90-495e-aaba-fd397f9b3336}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\RespawnZOne">
+      <UniqueIdentifier>{b14213d8-91ff-44ef-a1c4-253b55373823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\BgImage\Cloud">
+      <UniqueIdentifier>{c5627a3f-2f54-4600-adc1-4969ba4968d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\BgImage\Tree">
+      <UniqueIdentifier>{499f4f17-68bb-4122-b560-7c4dc7864128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\Effect">
+      <UniqueIdentifier>{7fce26c3-1da4-4131-a138-ff2bab27fc91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\Effect\Damage">
+      <UniqueIdentifier>{a008fe92-ada2-4f5e-9a21-290e8e1f1c23}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +173,24 @@
     </ClCompile>
     <ClCompile Include="MoveTeleport.cpp">
       <Filter>소스 파일\Object\MoveTeleport</Filter>
+    </ClCompile>
+    <ClCompile Include="BgImage.cpp">
+      <Filter>소스 파일\Object\BgImage</Filter>
+    </ClCompile>
+    <ClCompile Include="Village.cpp">
+      <Filter>소스 파일\MapFile\Village</Filter>
+    </ClCompile>
+    <ClCompile Include="Cloud.cpp">
+      <Filter>소스 파일\Object\BgImage\Cloud</Filter>
+    </ClCompile>
+    <ClCompile Include="Tree.cpp">
+      <Filter>소스 파일\Object\BgImage\Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>소스 파일\Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Damage.cpp">
+      <Filter>소스 파일\Object\Effect\Damage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +274,24 @@
     </ClInclude>
     <ClInclude Include="MoveTeleport.h">
       <Filter>소스 파일\Object\MoveTeleport</Filter>
+    </ClInclude>
+    <ClInclude Include="BgImage.h">
+      <Filter>소스 파일\Object\BgImage</Filter>
+    </ClInclude>
+    <ClInclude Include="Village.h">
+      <Filter>소스 파일\MapFile\Village</Filter>
+    </ClInclude>
+    <ClInclude Include="Cloud.h">
+      <Filter>소스 파일\Object\BgImage\Cloud</Filter>
+    </ClInclude>
+    <ClInclude Include="Tree.h">
+      <Filter>소스 파일\Object\BgImage\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>소스 파일\Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Damage.h">
+      <Filter>소스 파일\Object\Effect\Damage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

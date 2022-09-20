@@ -1,6 +1,6 @@
 #pragma once
 #include "Headers.h"
-
+#include <list>
 class Object;
 class ObjectManager
 {
@@ -17,7 +17,7 @@ private:
 	Object* pPlayer;
 	//제일 외부의 문자열은 맵의 이름
 	//내부의 문자열은 몬스터의 타입을 나타낸다.
-	map<string, map<string,deque<Object*>>> Objects;
+	map<string, map<string,list<Object*>>> Objects;
 	//현재의 맵이름. 현재 맵만 렌더링 해야함
 	string currMapName;
 	//텔레포트 지연시간

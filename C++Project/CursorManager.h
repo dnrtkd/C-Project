@@ -28,7 +28,7 @@ public:
 	void WriteBuffer(float _x, float _y, char* _str, int _Color = 15);
 	void WriteBuffer(Vector3 _Position, char* _str, int _Color = 15);
 	void WriteBuffer(Vector3 _Position,int val, int _Color = 15);
-	void RenderObj(const Texture& texture,float _x, float _y);
+	void RenderObj(const Texture& texture,float _x, float _y, bool screen = false);
 	void addScreenPosiX(float x)
 	{ 
 		screenPosiX += x; 

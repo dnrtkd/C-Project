@@ -26,6 +26,7 @@ Ground::Ground()
 	tag = ObjTag::Ground;
 	key = "Ground";
 	Sprite.intPutTexture("");
+	resZone = nullptr;
 	//Sprite.intPutTexture("=");
 	//Sprite.intPutTexture("=");
 	//Sprite.intPutTexture("=");

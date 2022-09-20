@@ -81,6 +81,7 @@ Enemy::Enemy():gravityAccel(0.3)
 	maxHp = 0;
 	MoveTime = GetTickCount64();
 	hitTime = GetTickCount64();
+	key = "Enemy";
 }
 
 Enemy::~Enemy()

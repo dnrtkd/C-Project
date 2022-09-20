@@ -3,8 +3,11 @@
 class UI
 {
 private:
-	char* buf;
+	//제목
+	string title;
+	vector<string> contents; //내용
 
+	vector<string> box;
 	Vector3 StartP; // 시작점
 	int Widht; 
 	int height;
@@ -14,12 +17,16 @@ public:
 	bool isTurnON;
 
 public:
-	void start();
+	void Start();
 	void Render();
-	void Update();
-	void Release();
+	void setTitle(string title);
+	void setPosi(Vector3 posi) { StartP = posi; }
+
+	void InputContents(string content);
 
 	void drawRec(); //사각형을 그리는 함수
+	void setSize(int Width,int Height);
+
 public:
 	UI();
 	~UI();

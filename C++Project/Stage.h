@@ -1,11 +1,13 @@
 #pragma once
 #include "Scene.h"
 #include "MapFile.h"
+#include "UI.h"
 class Stage : public Scene
 {
 	map<string,MapFile*> Maps;
 	string currMap;
-
+	vector<UI*> Ui;
+	UI* QuestTalkUi;
 	void pushMap(MapFile* map);
 public:
 	virtual void Start()override;

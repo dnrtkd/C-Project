@@ -141,8 +141,12 @@
   <ItemGroup>
     <ClCompile Include="BegginerHunt.cpp" />
     <ClCompile Include="BegginerHunt2.cpp" />
+    <ClCompile Include="BgImage.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="CursorManager.cpp" />
+    <ClCompile Include="Damage.cpp" />
+    <ClCompile Include="Effect.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -159,16 +163,22 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="Tree.cpp" />
     <ClCompile Include="UI.cpp" />
+    <ClCompile Include="Village.cpp" />
     <ClCompile Include="Worker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BegginerHunt.h" />
     <ClInclude Include="BegginerHunt2.h" />
+    <ClInclude Include="BgImage.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Cloud.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Constant.h" />
     <ClInclude Include="CursorManager.h" />
+    <ClInclude Include="Damage.h" />
+    <ClInclude Include="Effect.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Ground.h" />
@@ -188,7 +198,9 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Struct.h" />
+    <ClInclude Include="Tree.h" />
     <ClInclude Include="UI.h" />
+    <ClInclude Include="Village.h" />
     <ClInclude Include="Worker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

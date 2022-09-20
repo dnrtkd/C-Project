@@ -1,45 +1,47 @@
 #include "RespawnZone.h"
 #include "ObjectFactory.h"
+#include "ObjectManager.h"
+#include "CursorManager.h"
 
-void RespawnZone::Start()
-{
-}
 
-int RespawnZone::Update()
+void RespawnZone::createMon()
 {
-    for (auto iter = monL.begin(); iter != monL.end(); ++iter)
+
+    for (auto i = monList.begin(); i != monList.end();)
     {
-        if ((*iter) == nullptr)
-            monL.erase(iter);
+
+        if (!(*i))
+        {
+            i=monList.erase(i);
+        }
+        else
+            ++i;
     }
-
-    return 0;
-}
-
-void RespawnZone::Render()
-{
-}
-
-void RespawnZone::Release()
-{
-}
-
-void RespawnZone::createMon(string mapName)
-{
-    if (Timer + 1000 * resTime <= GetTickCount64() && monL.size() <= maxMonNum)
+    if (Timer + 3000 * resTime <= GetTickCount64() && monList.size() < maxMonNum)
     {
-        Object* t= ObjectFactory::CreateObject(Info.Position, mapName, monName);
-        monL.push_back(&t);
+        Timer = GetTickCount64();
+        int rNum = maxMonNum - monList.size();
+        for (int i = 0; i < rNum; ++i)
+        {
+            Object* temp=ObjectFactory::CreateObject(Vector3(respawnPosi.x+i*6,respawnPosi.y-4), 
+                ObjectManager::GetInstance()->getMapName(),monName);
+            monList.push_back(&temp);
+           
+        }
+        
+        
     }
     
 }
 
-RespawnZone::RespawnZone(float res, int _maxMonNum, string monN)
+RespawnZone::RespawnZone(float res, int _maxMonNum, string monN,Vector3 rPosi)
 {
     resTime = res;
     monName = monN;
     Timer = GetTickCount64();
     maxMonNum = _maxMonNum;
+    currMonNum = 0;
+    respawnPosi = rPosi;
 }
 
 RespawnZone::~RespawnZone()
