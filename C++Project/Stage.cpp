@@ -48,6 +48,18 @@ void Stage::Start()
 	QuestTalkUi->setSize(60, 25);
 	QuestTalkUi->setPosi(Vector3(45,7));
 	QuestTalkUi->setTitle("퀘스트 ");
+	QuestTalkUi->InputContents("안녕하세요 초보 모험가님!");
+	
+	QuestNPC_Ui = new UI;
+	QuestNPC_Ui->setSize(15, 8);
+	QuestNPC_Ui->setPosi(Vector3(90, 7));
+	QuestNPC_Ui->setTitle("NPC도우미");
+
+	QuestNPC_Ui->InputContents(" 0  ");
+	QuestNPC_Ui->InputContents("(|o  ");
+	QuestNPC_Ui->InputContents(" ^   ");
+	QuestNPC_Ui->InputContents("_.._");
+	
 }
 
 void Stage::Update()
@@ -60,7 +72,8 @@ void Stage::Render()
 {
 	ObjectManager::GetInstance()->Render();
 	Ui[0]->Render();
-	
+	//QuestTalkUi->Render();
+	//QuestNPC_Ui->Render();
 }
 
 void Stage::Release()

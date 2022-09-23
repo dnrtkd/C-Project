@@ -27,9 +27,13 @@ void Worker::Start()
 int Worker::Update()
 {
 	if (hitTime + 400 < GetTickCount64())
+	{
+		hitTime = GetTickCount64();
 		eState = ObjState::IDLE;
+	}
 
 	isGround();
+	if(!(eState==ObjState::hit))
 	move(0.1f);
 
 	if (eState == ObjState::hit)

@@ -31,6 +31,8 @@ public:
 	void Release();
 	void setMapName(string mName) { currMapName = mName; }
 	string getMapName() { return currMapName; }
+	//현재 씬에 있는 모든 몬스터들을 반환하는 함수
+	list<Object*>& FindAllMonsters() { return Objects[currMapName]["Enemy"]; }
 private:
 	ObjectManager();
 public:

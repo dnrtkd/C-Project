@@ -24,9 +24,18 @@ void BegginerHunt::Start()
 	 ObjectFactory::CreateTeleport(Vector3(180, 90), MapName, "BegginerHunt2",Vector3(5,90));
 	 ObjectFactory::CreateTeleport(Vector3(5, 90), MapName, "Village", Vector3(185, 90));
 
-	 ObjectFactory::CreateObject(Vector3(30, 2), MapName, "Tree");
-	 ObjectFactory::CreateObject(Vector3(85, 4), MapName, "Tree");
-	 ObjectFactory::CreateObject(Vector3(130,2), MapName, "Tree");
+	 ObjectFactory::CreateObject(Vector3(0, 2), MapName, "MapBgi");
+	 ObjectFactory::CreateObject(Vector3(-2, 14), MapName, "Tree");
+	 ObjectFactory::CreateObject(Vector3(30, 15), MapName, "Tree");
+	 ObjectFactory::CreateObject(Vector3(85, 16), MapName, "Tree");
+	 ObjectFactory::CreateObject(Vector3(130,13), MapName, "Tree");
+
+	 ObjectFactory::CreateObject(Vector3(-5,13), MapName, "Cloud");
+	 ObjectFactory::CreateObject(Vector3(30,12), MapName, "Cloud");
+	 ObjectFactory::CreateObject(Vector3(70,12), MapName, "Cloud");
+	 ObjectFactory::CreateObject(Vector3(150,12), MapName, "Cloud");
+	 ObjectFactory::CreateObject(Vector3(180,12), MapName, "Cloud");
+	 
 	 
 }
 

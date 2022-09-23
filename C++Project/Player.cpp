@@ -31,6 +31,7 @@ Player::Player()
 	hp = 50.0f;
 	damage = 5.0f;
 	fireTime = GetTickCount64();
+	skill1Timer = GetTickCount64();
 
 	Enim[0].intPutTexture(" 0  ");
 	Enim[0].intPutTexture("(|o ");
@@ -94,24 +95,25 @@ void Player::move()
 	if (speed.y > 0)
 		Info.Direction.y = 1;
 
-	/*if (Info.Position.x - CursorManager::GetInstance()->getScrPosiX() > 90 && Info.Direction.x==1)
-		CursorManager::GetInstance()->addScreenPosiX(speed.x);
-
-	if (Info.Position.x - CursorManager::GetInstance()->getScrPosiX() < 60 && Info.Direction.x == -1)
-		CursorManager::GetInstance()->addScreenPosiX(speed.x);
-
-	if (Info.Position.y - CursorManager::GetInstance()->getScrPosiY() < 16 && Info.Direction.y == -1)
-		CursorManager::GetInstance()->addScreenPosiY(speed.y);
-
-	if (Info.Position.y - CursorManager::GetInstance()->getScrPosiY() > 24 && Info.Direction.y == 1)
-		CursorManager::GetInstance()->addScreenPosiY(speed.y);*/
-
 	Info.Position += Vector3(speed.x , speed.y );
 }
 
 void Player::skill_1()
 {
-	
+	if (skill1Timer + 1 * 1000 < GetTickCount64())
+	{
+		skill1Timer = GetTickCount64();
+
+		float x = 0.0f;
+		float y = Info.Position.y + 2.0f;
+		if (Info.Direction.x == -1)
+			x = Info.Position.x - 8.0f;
+		else
+			x = Info.Position.x + 6.0f;
+
+		ObjectFactory::CreateBullet(Info.Position, ObjectManager::GetInstance()->getMapName(), 10.0f, Info.Direction,"Skill1");
+		//ObjectFactory::CreateObject(Vector3(x,y), ObjectManager::GetInstance()->getMapName(), "Skill1Effect");
+	}
 }
 
 void Player::Start()
@@ -184,6 +186,11 @@ int Player::Update()
 		//basicAttack();
 	}
 
+	if (dwKey & KEY_Q)
+	{
+		skill_1();
+	}
+
 	if (dwKey & KEY_RETURN)
 	{
 		basicAttack();
@@ -198,7 +205,7 @@ int Player::Update()
 	if (isGround)
 	{
 		speed.y = 0;
-		CursorManager::GetInstance()->WriteBuffer(140, 3, (char*)"is ground");
+		//CursorManager::GetInstance()->WriteBuffer(140, 3, (char*)"is ground");
 	}
 		
 

@@ -220,6 +220,9 @@ void ObjectManager::Update()
 						else
 							++iter;
 					}
+				if (j.first == "BgImage")
+					for (auto i : j.second)
+						i->Update();
 						
 			}
 		}

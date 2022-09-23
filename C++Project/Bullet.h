@@ -3,7 +3,7 @@
 
 class Bullet : public Object
 {
-private:
+protected:
 	int Index;
 	Texture* enim;
 	float damage;

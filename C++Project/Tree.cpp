@@ -1,4 +1,5 @@
 #include "Tree.h"
+#include "CursorManager.h"
 
 void Tree::Start()
 {
@@ -14,10 +15,6 @@ void Tree::Start()
 	enim->intPutTexture("       (``````````````````    )      ");
 	enim->intPutTexture("      (`````````````````````   )     ");
 	enim->intPutTexture("     (````````````````````````  )    ");
-	enim->intPutTexture("    (``````````````````````````` )   ");
-	enim->intPutTexture("   (````````````````````````````  )  ");
-	enim->intPutTexture("  (``````````````````````````````  ) ");
-	enim->intPutTexture(" (____ 0                        ____)");
 	enim->intPutTexture("            |              |         ");
 	enim->intPutTexture("            |              |         ");
 	enim->intPutTexture("            |              |         ");
@@ -31,29 +28,8 @@ void Tree::Start()
 	enim->intPutTexture("            |              |         ");
 	enim->intPutTexture("            |              |         ");
 	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |           |  |         ");
-	enim->intPutTexture("            |           |  |         ");
-	enim->intPutTexture("            |           |  |  /      ");
-	enim->intPutTexture("            |              | /       ");
-	enim->intPutTexture("            |              |/        ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
-	enim->intPutTexture("            |              |         ");
+
+
 	
 
 	Info.Scale.x = enim->getXsize();
@@ -63,12 +39,13 @@ void Tree::Start()
 
 int Tree::Update()
 {
+
 	return 0;
 }
 
 void Tree::Render()
 {
-	CursorManager::GetInstance()->RenderObj(*enim, Info.Position.x, Info.Position.y,true);
+	CursorManager::GetInstance()->RenderObj(*enim, Info.Position.x, Info.Position.y,1);
 }
 
 void Tree::Release()

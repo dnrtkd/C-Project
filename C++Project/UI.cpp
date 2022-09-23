@@ -14,6 +14,11 @@ void UI::Render()
 	
 	CursorManager::GetInstance()->WriteBuffer(((StartP.x + (StartP.x + Widht)) / 2) - (title.size() / 2), StartP.y + 1, (char*)title.c_str());
 	
+	for (size_t i = 0; i < contents.size(); i++)
+	{
+		CursorManager::GetInstance()->WriteBuffer(StartP.x + 2, StartP.y + 3+i, (char*)contents[i].c_str());
+	}
+	
 	
 }
 
@@ -24,6 +29,7 @@ void UI::setTitle(string _title)
 
 void UI::InputContents(string content)
 {
+	contents.push_back(content);
 }
 
 void UI::drawRec()

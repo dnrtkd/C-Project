@@ -87,16 +87,22 @@ void CursorManager::WriteBuffer(Vector3 _Position, int val, int _Color)
 	WriteFile(HBuffer[BufferIndex], buff, (DWORD)strlen(buff), &dw, NULL);
 }
 
-void CursorManager::RenderObj(const Texture& texture,float _x, float _y,bool screen)
+void CursorManager::RenderObj(const Texture& texture,float _x, float _y,int screen)
 {
 
-	if (!screen)
+	if (screen==0)// 일반 오브젝트
 	{
 	// 출력하고자 하는 오브젝트의 좌표값- 스크린 좌표값을 해줌으로서
 	//스크린 좌표 이동을 구현할 수 있다.
 		_x = _x - screenPosiX;
 		_y = _y - screenPosiY;
 	}
+	else if (screen == 1)//약간씩만 움직여 거리감을 주는 이미지
+	{
+		_x = _x - screenPosiX*0.2;
+		_y = _y - screenPosiY*0.1;
+	}
+
 	int sizeX = texture.getXsize();
 	int sizeY = texture.getYsize();
 

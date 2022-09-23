@@ -25,11 +25,8 @@ void RespawnZone::createMon()
         {
             Object* temp=ObjectFactory::CreateObject(Vector3(respawnPosi.x+i*6,respawnPosi.y-4), 
                 ObjectManager::GetInstance()->getMapName(),monName);
-            monList.push_back(&temp);
-           
+            monList.push_back(&temp);  
         }
-        
-        
     }
     
 }

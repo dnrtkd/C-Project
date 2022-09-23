@@ -8,6 +8,7 @@ class Stage : public Scene
 	string currMap;
 	vector<UI*> Ui;
 	UI* QuestTalkUi;
+	UI* QuestNPC_Ui;
 	void pushMap(MapFile* map);
 public:
 	virtual void Start()override;
