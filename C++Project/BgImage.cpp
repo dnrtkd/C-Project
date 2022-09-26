@@ -4,7 +4,7 @@
 
 BgImage::BgImage()
 {
-	key = "BgImage";
+	key = BGIMAGE;
 	enim = new Texture;
 }
 

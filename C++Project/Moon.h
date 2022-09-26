@@ -1,9 +1,7 @@
 #pragma once
 #include"BgImage.h"
-class Cloud:public BgImage
+class Moon :public BgImage
 {
-	ULONGLONG moveTimer;
-	float moveValue;
 public:
 	virtual void Start()override;
 	virtual int  Update()override;
@@ -11,7 +9,7 @@ public:
 	virtual void Release()override;
 
 public:
-	Cloud();
-	virtual ~Cloud();
+	Moon();
+	virtual ~Moon();
 };
 

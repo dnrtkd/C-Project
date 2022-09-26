@@ -14,6 +14,7 @@ ObjectManager* ObjectManager::Instance = nullptr;
 
 ObjectManager::ObjectManager() : pPlayer(nullptr)
 {
+	telpoTime = GetTickCount64();
 	//map<string, deque<Object*>> t;
 	//deque<Object*> t2;
 	//t.insert(make_pair("Ground", t2));
@@ -28,9 +29,9 @@ ObjectManager::~ObjectManager()
 void ObjectManager::AddObject(Object* obj ,string mapName)
 {
 	//오브젝트의 키를 받아옴
-	string key = obj->GetKey();
+	short key = obj->GetKey();
 	Objects[mapName][key].push_back(obj);
-	telpoTime = GetTickCount64();
+
 }
 
 //void ObjectManager::CreateObject()
@@ -107,7 +108,7 @@ void ObjectManager::Update()
 			for (auto &j : i.second)
 			{
 				// 에너미 업데이트
-				if (j.first == "Enemy")
+				if (j.first == ENEMY)
 				{
 					for (auto iter = j.second.begin(); iter != j.second.end(); )
 					{
@@ -115,6 +116,7 @@ void ObjectManager::Update()
 
 						if (dynamic_cast<Enemy*>((*iter))->getState() == ObjState::DEAD)
 						{
+							dynamic_cast<Player*>(pPlayer)->PlayerMoney += dynamic_cast<Enemy*>((*iter))->gold;
 							delete (*iter);
 							iter=j.second.erase(iter);
 						}
@@ -122,7 +124,7 @@ void ObjectManager::Update()
 							++iter;
 					}
 				}
-				if (j.first == "Ground")
+				if (j.first == GROUND)
 				{
 					for (auto iter = j.second.begin(); iter != j.second.end(); ++iter)
 					{
@@ -134,19 +136,23 @@ void ObjectManager::Update()
 							pPlayer->SetPosition(Vector3(pPlayer->GetPosition().x,
 								(*iter)->GetPosition().y - pPlayer->GetTransform().Scale.y + 1));
 						}
-						for (auto &enemy : i.second["Enemy"])
+						int monNum = 0;
+						for (auto &enemy : i.second[ENEMY])
 						{
 							if ((*iter)->GetPosition().y > enemy->GetPosition().y &&
 								CollisionManager::RectCollision((*iter)->GetTransform(), enemy->GetTransform()))
 							{
+								monNum++;
 				
 								dynamic_cast<Enemy*>(enemy)->setStepGround((*iter));
+
 							}
 						}
+						dynamic_cast<Ground*>(*iter)->monNumMasage(monNum);
 						dynamic_cast<Ground*>(*iter)->createMon();
 					}
 				}
-				if (j.first == "Bullet")
+				if (j.first == BULLET)
 				{
 					int result = 0;
 					for (auto iter = j.second.begin(); iter != j.second.end(); )
@@ -159,7 +165,7 @@ void ObjectManager::Update()
 							result = 1;
 						}
 
-						for (auto &enemy : i.second["Enemy"])
+						for (auto &enemy : i.second[ENEMY])
 						{
 							//총알과 에너미의 충돌 부분
 							if (CollisionManager::RectCollision((*iter)->GetTransform(), enemy->GetTransform()))
@@ -187,7 +193,7 @@ void ObjectManager::Update()
 					}
 				}
 				//텔레포트는 객체가 파괴되지 않기 때문에 범위 for문으로 순회
-				if (j.first == "Teleport")
+				if (j.first == MOVE_TELEPORT)
 				{
 					for (auto &i : j.second)
 					{
@@ -208,7 +214,7 @@ void ObjectManager::Update()
 							
 					}
 				}
-				if (j.first == "Effect")
+				if (j.first == EFFECT)
 					for (auto iter=j.second.begin();iter!=j.second.end();)
 					{
 						(*iter)->Update();
@@ -220,6 +226,9 @@ void ObjectManager::Update()
 						else
 							++iter;
 					}
+				if (j.first == BGIMAGE)
+					for (auto i : j.second)
+						i->Update();
 						
 			}
 		}

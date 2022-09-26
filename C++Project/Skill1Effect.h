@@ -1,17 +1,16 @@
 #pragma once
-#include"BgImage.h"
-class Cloud:public BgImage
+#include "Effect.h"
+class Skill1Effect :public Effect
 {
-	ULONGLONG moveTimer;
-	float moveValue;
+	int count;
 public:
 	virtual void Start()override;
 	virtual int  Update()override;
 	virtual void Render()override;
 	virtual void Release()override;
-
+	
 public:
-	Cloud();
-	virtual ~Cloud();
+	Skill1Effect();
+	virtual ~Skill1Effect();
 };
 

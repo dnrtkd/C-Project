@@ -69,7 +69,7 @@ MoveTeleport::MoveTeleport()
 	currEnim = 0;
 	Enim = nullptr;
 	EnimTime = GetTickCount64();
-	key = "Teleport";
+	key = MOVE_TELEPORT;
 	NextPosi = { 0,0 };
 }
 

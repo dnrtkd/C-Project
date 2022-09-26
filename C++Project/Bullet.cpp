@@ -7,7 +7,7 @@ Bullet::Bullet()
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(1.0f, 1.0f);
 	Info.Direction = Vector3(0.0f, 0.0f);
-	key = "Bullet";
+	key = BULLET;
 	Target = nullptr;
 
 	enim = new Texture[2];

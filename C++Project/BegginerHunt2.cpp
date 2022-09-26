@@ -5,7 +5,7 @@ void BegginerHunt2::Start()
 	// ¸Ç ¹Ø ¶¥
 	ObjectFactory::CreateGround(Vector3(0, 95), MapName, 100, 5);
 	ObjectFactory::CreateGround(Vector3(100, 95), MapName, 100, 5);
-
+	
 	ObjectFactory::CreateGround(Vector3(30, 85), MapName, 50, 5);
 	ObjectFactory::CreateGround(Vector3(30, 75), MapName, 50, 5);
 	ObjectFactory::CreateGround(Vector3(30, 65), MapName, 50, 5);

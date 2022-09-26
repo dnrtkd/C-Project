@@ -14,22 +14,31 @@ void Worker::Start()
 	Enim[1].intPutTexture("|   |");
 	Enim[1].intPutTexture("-----");
 	
+	Enim->color = 13;
+	Enim[1].color = 15;
 	
 	Info.Position = Vector3(120, 20);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(strlen("-----"), 5.0f);
 	Info.Direction = Vector3(0.0f, 0.0f);
 	speed.x = -1;
+	gold = 5;
 
 	name = (char*)"¿œ≤€";
 }
 
 int Worker::Update()
 {
+	if (eState==ObjState::DEAD) return 0;
+
 	if (hitTime + 400 < GetTickCount64())
+	{
+		hitTime = GetTickCount64();
 		eState = ObjState::IDLE;
+	}
 
 	isGround();
+	if(!(eState==ObjState::hit))
 	move(0.1f);
 
 	if (eState == ObjState::hit)
@@ -51,6 +60,8 @@ void Worker::Release()
 
 void Worker::hit(float damage,bool left)
 {
+	if (eState == ObjState::DEAD) return;
+
 	hp -= damage;
 
 	hitTime = GetTickCount64();
@@ -73,7 +84,7 @@ void Worker::hit(float damage,bool left)
 Worker::Worker()
 {
 	Enim = new Texture[2];
-	maxHp = 10.0f;
+	maxHp = 50.0f;
 	hp = maxHp;
 	damage = 5.0f;
 }

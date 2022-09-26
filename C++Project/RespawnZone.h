@@ -11,7 +11,7 @@ class RespawnZone
 	int maxMonNum;
 	int currMonNum;
 	ULONGLONG Timer;
-	list<Object**> monList;
+	
 public:
 	void setMonName(string n) { monName = n; }
 	void setResTime(float a) { resTime = a; }

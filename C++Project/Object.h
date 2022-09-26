@@ -7,7 +7,8 @@ protected:
 	Transform Info;
 	Object* Target;
 	ObjTag tag;
-	string key;
+	short key;
+	int z_order;
 public:
 	virtual void Start()PURE;
 	virtual int Update()PURE;
@@ -24,7 +25,7 @@ public:
 	void SetDirection(Vector3 _Direction) { Info.Direction = _Direction; }
 	void SetDirection(float _x, float _y) { Info.Direction = Vector3(_x, _y); }
 	void SetTarget(Object* _Target) { Target = _Target; }
-	string GetKey() { return key; }
+	short GetKey() { return key; }
 public:
 	Object();
 	virtual ~Object();

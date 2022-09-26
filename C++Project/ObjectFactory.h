@@ -9,7 +9,10 @@
 #include "Cloud.h"
 #include "Tree.h"
 #include "Damage.h"
-
+#include "MapBgi.h"
+#include "Skill1Effect.h"
+#include "Skill1Bullet.h"
+#include "Moon.h"
 class ObjectFactory
 {
 public:
@@ -24,6 +27,12 @@ public:
 			pObject = new Tree;
 		if (monN == "Damage")
 			pObject = new Damage;
+		if (monN == "MapBgi")
+			pObject = new MapBgi;
+		if (monN == "Skill1Effect")
+			pObject = new Skill1Effect;
+		if (monN == "Moon")
+			pObject = new Moon;
 		
 		pObject->Start();
 		pObject->SetPosition(_position);
@@ -32,9 +41,13 @@ public:
 
 		return pObject;
 	}
-	static Object* CreateBullet(Vector3 _position, string mapN,float damage,Vector3 _direction)
+	static Object* CreateBullet(Vector3 _position, string mapN,float damage,Vector3 _direction,string bulletName="defalt")
 	{
-		Object* pObject = new Bullet;
+		Object* pObject = nullptr;
+		if (bulletName == "defalt")
+			 pObject = new Bullet;
+		else if (bulletName == "Skill1")
+			 pObject = new Skill1Bullet;
 
 		dynamic_cast<Bullet*>(pObject)->setDamage(damage);
 		pObject->Start();
@@ -42,25 +55,9 @@ public:
 		if (_direction.x == 1)
 			pObject->SetPosition(_position.x + 6, _position.y + 2);
 		else
-			pObject->SetPosition(_position.x - 1, _position.y + 2);
+			pObject->SetPosition(_position.x - 2, _position.y + 2);
 
 		ObjectManager::GetInstance()->AddObject(pObject, mapN);
-
-	
-
-		//			Vector3 vec = pPlayer->GetPosition();
-		//
-		//			pBullet[i]->SetDirection(pPlayer->GetTransform().Direction.x,0);
-		//			dynamic_cast<Bullet*> (pBullet[i])->setDamage(dynamic_cast<Player*>(pPlayer)->getDamage());
-		//
-		//			if(pPlayer->GetTransform().Direction.x==1)
-		//				pBullet[i]->SetPosition(vec.x+6,vec.y+2);
-		//			else
-		//				pBullet[i]->SetPosition(vec.x -1, vec.y + 2);
-		//			break;
-
-
-
 
 		return pObject;
 	}

@@ -10,9 +10,11 @@ protected:
 	float hp;
 	float maxHp;
 	float damage;
+	char* name;
+
+public:
 	int gold;
 	int exp;
-	char* name;
 
 	ObjState eState; //현재 플레이어 상태
 

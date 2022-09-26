@@ -6,30 +6,15 @@
 
 void RespawnZone::createMon()
 {
-
-    for (auto i = monList.begin(); i != monList.end();)
-    {
-
-        if (!(*i))
-        {
-            i=monList.erase(i);
-        }
-        else
-            ++i;
-    }
-    if (Timer + 3000 * resTime <= GetTickCount64() && monList.size() < maxMonNum)
+    if (Timer + 1000 * resTime <= GetTickCount64() && currMonNum < maxMonNum)
     {
         Timer = GetTickCount64();
-        int rNum = maxMonNum - monList.size();
+        int rNum = maxMonNum - currMonNum;
         for (int i = 0; i < rNum; ++i)
         {
-            Object* temp=ObjectFactory::CreateObject(Vector3(respawnPosi.x+i*6,respawnPosi.y-4), 
+            Object* temp=ObjectFactory::CreateObject(Vector3(respawnPosi.x+i*10,respawnPosi.y-4), 
                 ObjectManager::GetInstance()->getMapName(),monName);
-            monList.push_back(&temp);
-           
         }
-        
-        
     }
     
 }
@@ -38,7 +23,7 @@ RespawnZone::RespawnZone(float res, int _maxMonNum, string monN,Vector3 rPosi)
 {
     resTime = res;
     monName = monN;
-    Timer = GetTickCount64();
+    Timer = GetTickCount64()-1000*resTime;
     maxMonNum = _maxMonNum;
     currMonNum = 0;
     respawnPosi = rPosi;

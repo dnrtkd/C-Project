@@ -153,8 +153,11 @@
     <ClCompile Include="Logo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
+    <ClCompile Include="MapBgi.cpp" />
+    <ClCompile Include="MapBgi2.cpp" />
     <ClCompile Include="MapFile.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Moon.cpp" />
     <ClCompile Include="MoveTeleport.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
@@ -162,6 +165,8 @@
     <ClCompile Include="RespawnZone.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Skill1Bullet.cpp" />
+    <ClCompile Include="Skill1Effect.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Tree.cpp" />
     <ClCompile Include="UI.cpp" />
@@ -186,8 +191,11 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Logo.h" />
     <ClInclude Include="MainUpdate.h" />
+    <ClInclude Include="MapBgi.h" />
+    <ClInclude Include="MapBgi2.h" />
     <ClInclude Include="MapFile.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Moon.h" />
     <ClInclude Include="MoveTeleport.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectFactory.h" />
@@ -196,6 +204,8 @@
     <ClInclude Include="RespawnZone.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Skill1Bullet.h" />
+    <ClInclude Include="Skill1Effect.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="Tree.h" />

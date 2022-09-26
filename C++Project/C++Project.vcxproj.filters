@@ -106,6 +106,21 @@
     <Filter Include="소스 파일\Object\Effect\Damage">
       <UniqueIdentifier>{a008fe92-ada2-4f5e-9a21-290e8e1f1c23}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Object\BgImage\MapBgi">
+      <UniqueIdentifier>{294c6cc9-a63c-4754-afda-dfd8bd2ffd8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\BgImage\MapBgi2">
+      <UniqueIdentifier>{bbbc769f-a6e2-4ed7-92c8-9ce61deea0bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\Effect\Skill1Efeect">
+      <UniqueIdentifier>{c0c3f5ae-c1aa-4941-9452-2e35f5c6cd74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\Bullet\Skill1Bullet">
+      <UniqueIdentifier>{7934d368-479f-4a73-853f-b59c2522d9bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\BgImage\Moon">
+      <UniqueIdentifier>{346b9d1f-c789-4e58-a9ac-caf73f9c35c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -174,9 +189,6 @@
     <ClCompile Include="MoveTeleport.cpp">
       <Filter>소스 파일\Object\MoveTeleport</Filter>
     </ClCompile>
-    <ClCompile Include="BgImage.cpp">
-      <Filter>소스 파일\Object\BgImage</Filter>
-    </ClCompile>
     <ClCompile Include="Village.cpp">
       <Filter>소스 파일\MapFile\Village</Filter>
     </ClCompile>
@@ -191,6 +203,24 @@
     </ClCompile>
     <ClCompile Include="Damage.cpp">
       <Filter>소스 파일\Object\Effect\Damage</Filter>
+    </ClCompile>
+    <ClCompile Include="BgImage.cpp">
+      <Filter>소스 파일\Object\BgImage</Filter>
+    </ClCompile>
+    <ClCompile Include="MapBgi.cpp">
+      <Filter>소스 파일\Object\BgImage\MapBgi</Filter>
+    </ClCompile>
+    <ClCompile Include="MapBgi2.cpp">
+      <Filter>소스 파일\Object\BgImage\MapBgi2</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill1Effect.cpp">
+      <Filter>소스 파일\Object\Effect\Skill1Efeect</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill1Bullet.cpp">
+      <Filter>소스 파일\Object\Bullet\Skill1Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Moon.cpp">
+      <Filter>소스 파일\Object\BgImage\Moon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,9 +305,6 @@
     <ClInclude Include="MoveTeleport.h">
       <Filter>소스 파일\Object\MoveTeleport</Filter>
     </ClInclude>
-    <ClInclude Include="BgImage.h">
-      <Filter>소스 파일\Object\BgImage</Filter>
-    </ClInclude>
     <ClInclude Include="Village.h">
       <Filter>소스 파일\MapFile\Village</Filter>
     </ClInclude>
@@ -292,6 +319,24 @@
     </ClInclude>
     <ClInclude Include="Damage.h">
       <Filter>소스 파일\Object\Effect\Damage</Filter>
+    </ClInclude>
+    <ClInclude Include="BgImage.h">
+      <Filter>소스 파일\Object\BgImage</Filter>
+    </ClInclude>
+    <ClInclude Include="MapBgi.h">
+      <Filter>소스 파일\Object\BgImage\MapBgi</Filter>
+    </ClInclude>
+    <ClInclude Include="MapBgi2.h">
+      <Filter>소스 파일\Object\BgImage\MapBgi2</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill1Effect.h">
+      <Filter>소스 파일\Object\Effect\Skill1Efeect</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill1Bullet.h">
+      <Filter>소스 파일\Object\Bullet\Skill1Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Moon.h">
+      <Filter>소스 파일\Object\BgImage\Moon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

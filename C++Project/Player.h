@@ -21,8 +21,14 @@ class Player : public Object
 	float hp; //현재 체력
 	float delay; //공격 대기시간
 	ULONGLONG fireTime;
+	ULONGLONG skill1Timer;
 public:
 	bool isGround;
+
+	int PlayerMoney;
+	int ExTable[5];
+	int playerLevel;
+	int Exp;
 private:
 	void move();
 	void skill_1(); //다수 적 넉백 효과
