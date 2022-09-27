@@ -4,6 +4,7 @@
 void Ground::Start()
 {
 	Info.Scale = { (float)Sprite.getXsize(),(float)Sprite.getYsize() };
+	
 }
 
 int Ground::Update()
@@ -27,10 +28,7 @@ Ground::Ground()
 	key = GROUND;
 	Sprite.intPutTexture("");
 	resZone = nullptr;
-	//Sprite.intPutTexture("=");
-	//Sprite.intPutTexture("=");
-	//Sprite.intPutTexture("=");
-	//Sprite.intPutTexture("=");
+	Sprite.color = 3;
 }
 
 Ground::~Ground()

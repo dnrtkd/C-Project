@@ -7,7 +7,8 @@ void BegginerHunt::Start()
 	 ObjectFactory::CreateGround(Vector3(0, 95), MapName, 100, 5);
 	 ObjectFactory::CreateGround(Vector3(100, 95), MapName, 100, 5);
 
-	 ObjectFactory::CreateGround(Vector3(50, 85), MapName, 70, 3);
+	 temp=ObjectFactory::CreateGround(Vector3(50, 85), MapName, 70, 3);
+	 dynamic_cast<Ground*>(temp)->setResZone(10.0f, 6, "Worker");
 	 temp=ObjectFactory::CreateGround(Vector3(50, 75), MapName, 70, 3);
 	 dynamic_cast<Ground*>(temp)->setResZone(10.0f, 6, "Worker");
 	 temp=ObjectFactory::CreateGround(Vector3(50, 65), MapName, 70, 3);

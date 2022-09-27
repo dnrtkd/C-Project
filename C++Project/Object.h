@@ -10,6 +10,8 @@ protected:
 	short key;
 	int z_order;
 public:
+	bool dead;
+public:
 	virtual void Start()PURE;
 	virtual int Update()PURE;
 	virtual void Render()PURE;

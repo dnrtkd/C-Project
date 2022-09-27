@@ -148,6 +148,7 @@
     <ClCompile Include="Damage.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Gold.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logo.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Skill1Bullet.cpp" />
     <ClCompile Include="Skill1Effect.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="Stump.cpp" />
     <ClCompile Include="Tree.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Village.cpp" />
@@ -186,6 +188,7 @@
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="Gold.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="InputManager.h" />
@@ -208,6 +211,7 @@
     <ClInclude Include="Skill1Effect.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Struct.h" />
+    <ClInclude Include="Stump.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="Village.h" />

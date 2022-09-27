@@ -40,6 +40,8 @@ void Cloud::Release()
 
 Cloud::Cloud()
 {
+    enim->color = 7;
+
     moveTimer = GetTickCount64();
     moveValue = 0.0f;
 }

@@ -12,7 +12,6 @@ void Enemy::move(float delay)
 		srand(time(0)*(int)this);
 		int ran = rand() % 3;
 
-
 		if (ran == 0)
 		{
 			eState = ObjState::IDLE;
@@ -80,8 +79,9 @@ Enemy::Enemy():gravityAccel(0.3)
 	stepGround = nullptr;
 	maxHp = 0;
 	MoveTime = GetTickCount64();
-	hitTime = GetTickCount64();
 	key = ENEMY;
+	deadCount = 0;
+	hitCount = 0;
 }
 
 Enemy::~Enemy()

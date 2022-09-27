@@ -14,7 +14,7 @@ void Skill1Bullet::Start()
 	float min = 500.0f;
 	float value = 0.0f;
 	// 모든 적 오브젝트를 순회하여 가장 거리가 짧은 몬스터를 반환함
-	for (auto iter = temp.begin(); iter != temp.end(); ++iter)
+	/*for (auto iter = temp.begin(); iter != temp.end(); ++iter)
 	{
 		if (value=Vector3::GetDistance((*iter)->GetPosition(),Info.Position) < min)
 		{
@@ -29,7 +29,7 @@ void Skill1Bullet::Start()
 			}
 				
 		}
-	}
+	}*/
 }
 
 int Skill1Bullet::Update()
@@ -53,7 +53,7 @@ void Skill1Bullet::Release()
 		ObjectManager::GetInstance()->getMapName(), "Skill1Effect");
 
 	Info.Position = Vector3(Info.Position.x - 9.0f, Info.Position.y);
-	Info.Scale = Vector3(18.0f, 1.0f);
+	Info.Scale = Vector3(18.0f, 2.0f);
 	list<Object*> temp = ObjectManager::GetInstance()->FindAllMonsters();
 
 	for (auto iter = temp.begin(); iter != temp.end(); ++iter)
@@ -74,7 +74,7 @@ void Skill1Bullet::Release()
 
 Skill1Bullet::Skill1Bullet()
 {
-	Info.Scale = Vector3(1.0f, 1.0f);
+	Info.Scale = Vector3(2.0f, 2.0f);
 }
 
 Skill1Bullet::~Skill1Bullet()

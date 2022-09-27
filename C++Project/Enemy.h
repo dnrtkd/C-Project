@@ -22,7 +22,8 @@ public:
 	int currEnim; //현재 선택된 텍스쳐
 	ULONGLONG EnimTime;// 애니메이션 변수
 	ULONGLONG MoveTime; // 움직임을 바꿀때 필요한 타이머
-	ULONGLONG hitTime;
+	short hitCount;
+	short deadCount;//애니메이션 카운트
 
 	float gravityAccel; //중력 가속도
 	Vector3 speed;

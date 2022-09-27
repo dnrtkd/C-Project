@@ -13,6 +13,7 @@
 #include "Skill1Effect.h"
 #include "Skill1Bullet.h"
 #include "Moon.h"
+#include "Stump.h"
 class ObjectFactory
 {
 public:
@@ -33,7 +34,8 @@ public:
 			pObject = new Skill1Effect;
 		if (monN == "Moon")
 			pObject = new Moon;
-		
+		if (monN == "Stump")
+			pObject = new Stump;
 		pObject->Start();
 		pObject->SetPosition(_position);
 

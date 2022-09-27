@@ -121,6 +121,12 @@
     <Filter Include="소스 파일\Object\BgImage\Moon">
       <UniqueIdentifier>{346b9d1f-c789-4e58-a9ac-caf73f9c35c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Object\Gold">
+      <UniqueIdentifier>{2f7b59e5-3267-4db6-a83b-ebfe068d8940}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\Enemy\Stump">
+      <UniqueIdentifier>{5c23e09e-2e1f-4cfe-bf92-87365190baf8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -221,6 +227,12 @@
     </ClCompile>
     <ClCompile Include="Moon.cpp">
       <Filter>소스 파일\Object\BgImage\Moon</Filter>
+    </ClCompile>
+    <ClCompile Include="Gold.cpp">
+      <Filter>소스 파일\Object\Gold</Filter>
+    </ClCompile>
+    <ClCompile Include="Stump.cpp">
+      <Filter>소스 파일\Object\Enemy\Stump</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -337,6 +349,12 @@
     </ClInclude>
     <ClInclude Include="Moon.h">
       <Filter>소스 파일\Object\BgImage\Moon</Filter>
+    </ClInclude>
+    <ClInclude Include="Gold.h">
+      <Filter>소스 파일\Object\Gold</Filter>
+    </ClInclude>
+    <ClInclude Include="Stump.h">
+      <Filter>소스 파일\Object\Enemy\Stump</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

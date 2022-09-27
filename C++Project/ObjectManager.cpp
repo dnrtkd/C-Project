@@ -114,7 +114,7 @@ void ObjectManager::Update()
 					{
 						(*iter)->Update();
 
-						if (dynamic_cast<Enemy*>((*iter))->getState() == ObjState::DEAD)
+						if ((*iter)->dead)
 						{
 							dynamic_cast<Player*>(pPlayer)->PlayerMoney += dynamic_cast<Enemy*>((*iter))->gold;
 							delete (*iter);

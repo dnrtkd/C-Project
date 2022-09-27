@@ -21,6 +21,11 @@ void Village::Start()
 	ObjectFactory::CreateObject(Vector3(150, 12), MapName, "Cloud");
 	ObjectFactory::CreateObject(Vector3(180, 12), MapName, "Cloud");
 
+	ObjectFactory::CreateObject(Vector3(-5, 14), MapName, "Tree");
+	ObjectFactory::CreateObject(Vector3(35, 15), MapName, "Tree");
+	ObjectFactory::CreateObject(Vector3(85, 16), MapName, "Tree");
+	ObjectFactory::CreateObject(Vector3(130, 13), MapName, "Tree");
+
 }
 
 int Village::Update()

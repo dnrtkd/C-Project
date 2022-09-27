@@ -61,6 +61,7 @@ void Tree::Release()
 
 Tree::Tree()
 {
+	enim->color = 5;
 }
 
 Tree::~Tree()

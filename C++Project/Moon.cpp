@@ -13,6 +13,8 @@ void Moon::Start()
 	enim->intPutTexture(" ` 8888     ,88'   ");
 	enim->intPutTexture("    `8888888P'     ");
 	
+	enim->color = 14;
+
 	Info.Scale.x = enim->getXsize();
 	Info.Scale.y = enim->getYsize();
 }

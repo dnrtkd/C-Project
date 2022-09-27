@@ -47,7 +47,7 @@ void Stage::Start()
 	QuestTalkUi = new UI;
 	QuestTalkUi->setSize(60, 25);
 	QuestTalkUi->setPosi(Vector3(45,7));
-	QuestTalkUi->setTitle("Äù½ºÆ® ");
+	QuestTalkUi->setTitle("Äù½ºÆ®");
 
 	PlayerInfo = new UI;
 	PlayerInfo->setSize(30, 12);
