@@ -79,8 +79,8 @@ struct Texture
 		texture.push_back(st);
 	}
 
-	 int getYsize()const { return texture.size(); }
-	 int getXsize()const { return texture[0].size(); }
+	 int getYsize()const { return (int)texture.size(); }
+	 int getXsize()const { return (int)texture[0].size(); }
 
 	 Texture() { color = 15; }
 };

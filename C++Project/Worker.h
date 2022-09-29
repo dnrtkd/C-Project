@@ -3,6 +3,7 @@
 
 class Worker:public Enemy
 {
+	Texture* hpBar;
 public:
 	virtual void Start()override;
 	virtual int  Update()override;

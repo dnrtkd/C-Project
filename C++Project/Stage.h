@@ -12,8 +12,6 @@ class Stage : public Scene
 	void pushMap(MapFile* map);
 	Object* pPlayer;
 
-
-
 public:
 	virtual void Start()override;
 	virtual void Update()override;

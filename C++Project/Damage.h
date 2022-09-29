@@ -2,7 +2,7 @@
 #include "Effect.h"
 class Damage :public Effect
 {
-	int damage;
+	float damage;
 	int count;
 public:
 	virtual void Start()override;

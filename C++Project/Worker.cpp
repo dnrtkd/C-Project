@@ -49,6 +49,12 @@ void Worker::Start()
 	speed.x = -1;
 	gold = 5;
 
+	hpBar = new Texture;
+	
+	
+	hpBar->intPutTexture("HP: ");
+	hpBar->color = 13;
+
 	name = (char*)"ÀÏ²Û";
 }
 
@@ -101,7 +107,12 @@ int Worker::Update()
 void Worker::Render()
 {
 	CursorManager::GetInstance()->RenderObj(Enim[currEnim], Info.Position.x, Info.Position.y);
-	
+
+	if (maxHp != hp && !(eState == ObjState::DEAD))
+	{
+		CursorManager::GetInstance()->RenderObj(*hpBar, Info.Position.x, Info.Position.y-2);
+		
+	}
 }
 
 void Worker::Release()
@@ -122,13 +133,16 @@ void Worker::hit(float damage,bool left)
 	else
 		Info.Position.x -= 2;
 
-	
 	//CursorManager::GetInstance()->WriteBuffer(Vector3(Info.Position.x+2,Info.Position.y-2), -damage, 12);
 	if (hp <= 0)
 	{
 		hp = 0;
 		eState = ObjState::DEAD;
 	}
+
+	string temp=to_string((int)hp);
+	hpBar->texture[0].erase(hpBar->texture[0].begin()+4, hpBar->texture[0].end());
+	hpBar->texture[0].insert(hpBar->texture[0].begin() + 4,temp.begin(),temp.end());
 }
 
 Worker::Worker()

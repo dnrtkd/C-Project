@@ -36,6 +36,7 @@ void Cloud::Render()
 
 void Cloud::Release()
 {
+
 }
 
 Cloud::Cloud()
