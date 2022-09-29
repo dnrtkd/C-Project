@@ -171,15 +171,21 @@ void ObjectManager::Update()
 							if (CollisionManager::RectCollision((*iter)->GetTransform(), enemy->GetTransform()))
 							{
 								float damage = dynamic_cast<Bullet*>((*iter))->getDamage();
-								bool left = false;
-								if (pPlayer->GetPosition().x < enemy->GetPosition().x)
-									left = true;
-								dynamic_cast<Enemy*>(enemy)->hit(damage, left);
 
-								Object* temp = ObjectFactory::CreateObject(Vector3(enemy->GetPosition().x + 2,
-									enemy->GetPosition().y - 2), currMapName, "Damage");
+								if (damage != 0)
+								{
+									bool left = false;
+									if (pPlayer->GetPosition().x < enemy->GetPosition().x)
+										left = true;
+									dynamic_cast<Enemy*>(enemy)->hit(damage, left);
 
-								dynamic_cast<Damage*>(temp)->setDamageText(damage);
+
+									Object* temp = ObjectFactory::CreateObject(Vector3(enemy->GetPosition().x + 2,
+										enemy->GetPosition().y - 2), currMapName, "Damage");
+
+									dynamic_cast<Damage*>(temp)->setDamageText(damage);
+								}
+								
 								result = 1;
 							}
 						}

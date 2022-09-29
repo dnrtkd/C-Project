@@ -13,6 +13,8 @@ void Skill1Bullet::Start()
 
 	float min = 500.0f;
 	float value = 0.0f;
+
+	
 	// 모든 적 오브젝트를 순회하여 가장 거리가 짧은 몬스터를 반환함
 	/*for (auto iter = temp.begin(); iter != temp.end(); ++iter)
 	{
